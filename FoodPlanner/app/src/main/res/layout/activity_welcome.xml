@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mac"
+    android:alpha=".9"
+    tools:context=".WelcomeActivity">
+
+
+    <Button
+        android:id="@+id/btnGuest"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="106dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/transparent"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="@string/guest_btn"
+        android:textColor="#787474"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="255dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/primary"
+        android:text="@string/login_button"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:paddingTop="15dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSignup"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="255dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/primary"
+        android:paddingTop="15dp"
+        android:text="@string/Signup_btn"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvsocial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvline2"
+        android:layout_width="86dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/white"
+        android:text=""
+        android:textColor="#E6E6E6"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnGmail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvsocial"
+        android:layout_width="223dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="or use social sign up"
+        android:textColor="#E6E6E6"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnGmail"
+        app:layout_constraintEnd_toStartOf="@+id/tvline1"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toEndOf="@+id/tvline2" />
+
+    <TextView
+        android:id="@+id/tvline1"
+        android:layout_width="142dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="328dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/white"
+        android:text=""
+        android:textColor="#E6E6E6"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnGmail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnGmail"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="311dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/secondary"
+        android:drawableLeft="@drawable/icons8_gmail__1_"
+        android:src="@drawable/icons8_gmail"
+        android:text="@string/singup_gmail"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

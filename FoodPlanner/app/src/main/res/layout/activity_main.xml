@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:htext="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/f"
+        tools:layout_editor_absoluteX="-8dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+
+    <TextView
+        android:id="@+id/tvfav_title"
+        android:layout_width="396dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="412dp"
+        android:fontFamily="@font/lobster"
+        android:padding="8dp"
+        android:shadowColor="#574B53"
+        android:shadowDx="15"
+        android:shadowDy="2"
+        android:shadowRadius="8"
+        android:text="“Good food, good mood!”"
+        android:textColor="#E6E6E6"
+        android:textSize="38dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="ice_cream_sandwich" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
