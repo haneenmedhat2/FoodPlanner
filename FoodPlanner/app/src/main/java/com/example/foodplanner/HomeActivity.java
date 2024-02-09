@@ -11,6 +11,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -34,7 +35,6 @@ public class HomeActivity extends AppCompatActivity {
         navController = Navigation. findNavController( this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView,navController);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
-
     }
 
     @Override

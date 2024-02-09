@@ -59,4 +59,7 @@ dependencies {
 
     //Edit Text
     implementation 'com.google.android.material:material:1.4.0'
+
+    //circular img
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
