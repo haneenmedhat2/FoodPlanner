@@ -1,5 +1,6 @@
 package com.example.foodplanner;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnLogin =findViewById(R.id.btnLogin);
+        ActionBar actionBar = getSupportActionBar ();
+        actionBar.hide();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

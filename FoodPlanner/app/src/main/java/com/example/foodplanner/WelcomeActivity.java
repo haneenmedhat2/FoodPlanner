@@ -24,6 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         btnLogin=findViewById(R.id.btnLogin);
         btnSignup=findViewById(R.id.btnSignup);
+        ActionBar actionBar = getSupportActionBar ();
+        actionBar.hide();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
