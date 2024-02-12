@@ -1,4 +1,4 @@
-package com.example.foodplanner;
+package com.example.foodplanner.view;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.foodplanner.R;
 
 public class SignupActivity extends AppCompatActivity {
 Button btnSignup;
@@ -21,7 +23,7 @@ Button btnSignup;
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignupActivity.this,HomeActivity.class);
+                Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

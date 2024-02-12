@@ -1,18 +1,14 @@
-package com.example.foodplanner;
+package com.example.foodplanner.view;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.navigation.NavigationView;
+import com.example.foodplanner.R;
 
 public class WelcomeActivity extends AppCompatActivity {
     Button btnLogin,btnSignup;
@@ -30,7 +26,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this,LoginActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this,SignupActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
         });

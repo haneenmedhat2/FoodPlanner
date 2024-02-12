@@ -12,22 +12,21 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="370dp"
+        android:layout_width="390dp"
         android:layout_height="250dp"
         android:backgroundTint="#F8F6F6">
 
 
-        <ImageView
-            android:id="@+id/circularImageView"
-            android:layout_width="288dp"
-            android:layout_height="157dp"
-            android:layout_marginTop="12dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imCategory"
+            android:layout_width="190dp"
+            android:layout_height="209dp"
             android:gravity="left"
-            android:scaleType="fitXY"
             android:src="@drawable/mac"
             app:civ_border_color="#EAE3E3"
             app:civ_border_width="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCatTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,8 +34,7 @@
             android:id="@+id/tvCatTitle"
             android:layout_width="173dp"
             android:layout_height="51dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="4dp"
             android:gravity="center"
             android:padding="8dp"
             android:text="Foooood"
@@ -44,23 +42,9 @@
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnAdd"
-            app:layout_constraintHorizontal_bias="0.847"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:targetApi="ice_cream_sandwich" />
-
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="133dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/primary"
-            android:gravity="center"
-            android:text="Favourite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

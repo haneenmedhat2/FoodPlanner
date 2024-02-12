@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.Meals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder>{
@@ -54,9 +53,14 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
         Meals meal = meals.get(position);
         holder.tvTitle.setText(meal.getStrMeal());
 
-        String url = meal.getStrMealThumb();
+    /*    String url = meal.getStrMealThumb();
+        Glide.with(context).load(url).error(R.drawable.loading).into(holder.ivPhoto);*/
 
-        Glide.with(context).load(url).into(holder.ivPhoto);
+        Glide.with(context).load(meals.get(position).getStrMealThumb())
+                .apply(new RequestOptions().override(holder.ivPhoto.getWidth(),holder.ivPhoto.getHeight()))
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.loading)
+                .into(holder.ivPhoto);
 
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +88,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
         Button add;
         public MealHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tv_title);
+            tvTitle = itemView.findViewById(R.id.tvCatTitle);
             ivPhoto = itemView.findViewById(R.id.circularImageView);
             add = itemView.findViewById(R.id.btnAdd);
         }

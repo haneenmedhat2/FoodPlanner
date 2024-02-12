@@ -4,6 +4,8 @@ import android.content.Context;
 import android.icu.text.UFormat;
 import android.util.Log;
 
+import com.example.foodplanner.model.CategoriesResponse;
+import com.example.foodplanner.model.CountryResponse;
 import com.example.foodplanner.model.MealResponse;
 import com.example.foodplanner.model.Meals;
 import com.google.gson.Gson;
@@ -37,8 +39,11 @@ public class RemoteDataSourceAPI implements RemoteDataSource{
 
     private RemoteDataSourceAPI(Context context){
 
-        File cacheDirectory = new File(context.getCacheDir(), "offline_cache_directory");
-        Cache cache = new Cache(cacheDirectory,100 *1024 * 1024);
+        File cacheDirectory = new File(context.getCacheDir(), "offlineData");
+        Cache cache = new Cache(cacheDirectory,50 *1024 * 1024); //50MB
+       /* The cache is used to store responses for offline use,
+        reducing the need for network requests when the data is already available locally.*/
+
 
         OkHttpClient okHttpClient = new OkHttpClient
                 .Builder().cache(cache).build();
@@ -63,13 +68,76 @@ public class RemoteDataSourceAPI implements RemoteDataSource{
     @Override
     public void networkRandomMeals(NetworkCallback networkCallback) {
 
-        List<Meals> list=new ArrayList<>();
-        Flowable<MealResponse> mealModelResponseSingle= mealService.getRandomMeals();
+      /*
+        Call<MealResponse> mealModelResponseSingle= mealService.getRandomMeals();
         mealModelResponseSingle.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .onErrorComplete()
-                .repeat(10)
+                .repeat(5)
                 .doOnNext(e-> list.addAll(e.getMeal()))
                 .doOnComplete(()->networkCallback.onSuccessMeal(list))
-                .subscribe();
-        }
+                .subscribe();*/
+        Call<MealResponse> mealModelResponseSingle= mealService.getRandomMeals();
+        mealModelResponseSingle.enqueue(new Callback<MealResponse>() {
+            @Override
+            public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
+                if (response.isSuccessful()) {
+                    networkCallback.onSuccessMeal(response.body().getMeal());
+                    Log.i(TAG, "onResponse:network Random Meal "+response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MealResponse> call, Throwable t) {
+                Log.i(TAG, "onFailure: " + t.getMessage());
+                networkCallback.onFaild(t.getMessage());
+            }
+
+        });
+    }
+
+    @Override
+    public void networkCategories(NetworkCallback networkCallback) {
+
+        Call<CategoriesResponse> call = mealService.getCategories();
+
+        call.enqueue(new Callback<CategoriesResponse>() {
+            @Override
+            public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
+                if (response.isSuccessful()) {
+                    networkCallback.onSuccessCategories(response.body().getCategories());
+                    Log.i(TAG, "onResponse:networkCategories "+response.body());
+                }
+            }
+            @Override
+            public void onFailure(Call<CategoriesResponse> call, Throwable t) {
+                Log.i(TAG, "onFailure: " + t.getMessage());
+                networkCallback.onFaild(t.getMessage());
+            }
+        });
+
+    }
+
+    @Override
+    public void networkCountry(NetworkCallback networkCallback) {
+
+        Call<CountryResponse> call = mealService.getCountry("list");
+
+        call.enqueue(new Callback<CountryResponse>() {
+            @Override
+            public void onResponse(Call<CountryResponse> call, Response<CountryResponse> response) {
+                if (response.isSuccessful()&& response.body() != null) {
+                    networkCallback.onSuccessCountry(response.body().getCountries());
+                    Log.i(TAG, "onResponse: Country "+response.body());
+                }
+                else {
+                    networkCallback.onFaild("Received null country list");
+                }
+            }
+            @Override
+            public void onFailure(Call<CountryResponse> call, Throwable t) {
+                Log.i(TAG, "onFailure: Country" + t.getMessage());
+                networkCallback.onFaild(t.getMessage());
+            }
+        });
+    }
 }

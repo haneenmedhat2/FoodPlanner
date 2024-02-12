@@ -10,9 +10,8 @@ import com.example.foodplanner.network.RemoteDataSourceAPI;
 import java.util.List;
 
 public class Repository implements RepositoryInterface{
- //singleton//
+    //singleton//
     RemoteDataSourceAPI remoteDataSourceAPI;
-
     Context context;
 
     private static Repository repo=null;
@@ -33,5 +32,16 @@ public class Repository implements RepositoryInterface{
     @Override
     public void getRandomMeal(NetworkCallback networkCallback) {
         remoteDataSourceAPI.networkRandomMeals(networkCallback);
+    }
+
+    @Override
+    public void getCategories(NetworkCallback networkCallback) {
+        remoteDataSourceAPI.networkCategories(networkCallback);
+    }
+
+    @Override
+    public void getCountry(NetworkCallback networkCallback) {
+        remoteDataSourceAPI.networkCountry(networkCallback);
+
     }
 }
