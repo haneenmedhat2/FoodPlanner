@@ -8,7 +8,11 @@
         android:id="@+id/homeFragment2"
         android:name="com.example.foodplanner.homeScreen.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_allCategoriesFragment"
+            app:destination="@id/allCategoriesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment2"
         android:name="com.example.foodplanner.view.FavouriteFragment"
@@ -24,4 +28,13 @@
         android:name="com.example.foodplanner.view.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/allCategoriesFragment"
+        android:name="com.example.foodplanner.Categories.view.AllCategoriesFragment"
+        android:label="fragment_all_categories"
+        tools:layout="@layout/fragment_all_categories" >
+        <action
+            android:id="@+id/action_allCategoriesFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
 </navigation>

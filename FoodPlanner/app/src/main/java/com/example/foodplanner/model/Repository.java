@@ -50,4 +50,9 @@ public class Repository implements RepositoryInterface{
     public Observable getByMealName(String mealName) {
         return  remoteDataSourceAPI.networkGetMealByName(mealName);
     }
+
+    @Override
+    public Observable getByCategoryName(String categoryName) {
+        return  remoteDataSourceAPI.networkGetMealByCategory(categoryName);
+    }
 }

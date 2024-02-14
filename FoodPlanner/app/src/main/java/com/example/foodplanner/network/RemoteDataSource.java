@@ -12,4 +12,5 @@ public interface RemoteDataSource {
     public Observable networkIngredient();
 
     public Observable networkGetMealByName(String mealName);
+    public Observable networkGetMealByCategory(String categoryName);
 }

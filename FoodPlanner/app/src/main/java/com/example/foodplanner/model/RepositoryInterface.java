@@ -13,4 +13,6 @@ public interface RepositoryInterface {
 
     public Observable getByMealName(String mealName);
 
+    public Observable getByCategoryName(String categoryName);
+
 }
