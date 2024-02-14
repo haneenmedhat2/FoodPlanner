@@ -8,6 +8,7 @@
     android:elevation="20dp"
     android:backgroundTint="@color/white"
     app:cardPreventCornerOverlap="true"
+    android:id="@+id/card_inspire"
     app:cardCornerRadius="20dp">
 
 
@@ -24,7 +25,7 @@
             android:layout_marginTop="12dp"
             android:gravity="left"
             android:scaleType="fitXY"
-            android:src="@drawable/mac"
+            android:src="@drawable/loading"
             app:civ_border_color="#EAE3E3"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package com.example.foodplanner.homeScreen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.foodplanner.Item.view.ItemActivity;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.Meals;
 
@@ -53,15 +56,18 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
         Meals meal = meals.get(position);
         holder.tvTitle.setText(meal.getStrMeal());
 
-    /*    String url = meal.getStrMealThumb();
-        Glide.with(context).load(url).error(R.drawable.loading).into(holder.ivPhoto);*/
 
         Glide.with(context).load(meals.get(position).getStrMealThumb())
                 .apply(new RequestOptions().override(holder.ivPhoto.getWidth(),holder.ivPhoto.getHeight()))
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.loading)
                 .error(R.drawable.loading)
                 .into(holder.ivPhoto);
 
+        holder.cardView.setOnClickListener(v -> {
+            Intent myIntent =new Intent(context, ItemActivity.class);
+            myIntent.putExtra("NAME_OF_MEAL",meals.get(position).getStrMeal());
+            context.startActivity(myIntent);
+        });
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +89,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
 
     class MealHolder extends RecyclerView.ViewHolder{
 
+        CardView cardView;
         TextView tvTitle;
         ImageView ivPhoto;
         Button add;
@@ -91,6 +98,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
             tvTitle = itemView.findViewById(R.id.tvCatTitle);
             ivPhoto = itemView.findViewById(R.id.circularImageView);
             add = itemView.findViewById(R.id.btnAdd);
+            cardView=itemView.findViewById(R.id.card_inspire);
         }
     }
 }

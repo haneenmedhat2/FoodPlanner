@@ -3,15 +3,21 @@ package com.example.foodplanner.homeScreen.presenter;
 import android.util.Log;
 
 import com.example.foodplanner.homeScreen.view.HomeView;
-import com.example.foodplanner.model.Categories;
-import com.example.foodplanner.model.Country;
+import com.example.foodplanner.model.CategoriesResponse;
+import com.example.foodplanner.model.Ingredients;
+import com.example.foodplanner.model.MealResponse;
 import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.RepositoryInterface;
-import com.example.foodplanner.network.NetworkCallback;
 
 import java.util.List;
 
-public class HomePresenterImp implements HomePresenter, NetworkCallback {
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+
+public class HomePresenterImp implements HomePresenter{
 
     HomeView view;
     RepositoryInterface repo;
@@ -25,37 +31,79 @@ public class HomePresenterImp implements HomePresenter, NetworkCallback {
 
     @Override
     public void getRandomMeal() {
-        repo.getRandomMeal(this);
+        Observable<MealResponse> observable= repo.getRandomMeal();
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MealResponse>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+                    @Override
+                    public void onNext(@NonNull MealResponse mealResponse) {
+                       view.getRandomMeal(mealResponse.getMeal());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.i(TAG, "onError: Random Meal");
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
     public void getCategories() {
-        repo.getCategories(this);
+        Observable<CategoriesResponse> observable= repo.getCategories();
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CategoriesResponse>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull CategoriesResponse categoriesResponse) {
+                        view.getCategories(categoriesResponse.getCategories());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
     public void getCountry() {
-        repo.getCountry(this);
+        Observable <MealResponse> observable= repo.getCountry();
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MealResponse>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+                    @Override
+                    public void onNext(@NonNull MealResponse mealResponse) {
+                        view.getCountry(mealResponse.getMeal());
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
-    @Override
-    public void onSuccessMeal(List<Meals> mealModel) {
-        view.getRandomMeal(mealModel);
-
-    }
-
-    @Override
-    public void onSuccessCategories(List<Categories> categories) {
-        view.getCategories(categories);
-    }
-
-    @Override
-    public void onSuccessCountry(List<Country> countries) {
-        view.getCountry(countries);
-    }
-
-    @Override
-    public void onFaild(String msg) {
-        Log.i(TAG, "onFaild:Error when get data in home :"+msg );
-    }
 }

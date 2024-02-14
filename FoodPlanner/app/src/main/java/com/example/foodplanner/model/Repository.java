@@ -2,12 +2,9 @@ package com.example.foodplanner.model;
 
 import android.content.Context;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.foodplanner.network.NetworkCallback;
 import com.example.foodplanner.network.RemoteDataSourceAPI;
 
-import java.util.List;
+import io.reactivex.rxjava3.core.Observable;
 
 public class Repository implements RepositoryInterface{
     //singleton//
@@ -30,18 +27,27 @@ public class Repository implements RepositoryInterface{
 
 
     @Override
-    public void getRandomMeal(NetworkCallback networkCallback) {
-        remoteDataSourceAPI.networkRandomMeals(networkCallback);
+    public Observable getRandomMeal() {
+        return  remoteDataSourceAPI.networkRandomMeals();
     }
 
     @Override
-    public void getCategories(NetworkCallback networkCallback) {
-        remoteDataSourceAPI.networkCategories(networkCallback);
+    public Observable getCategories() {
+        return remoteDataSourceAPI.networkCategories();
     }
 
     @Override
-    public void getCountry(NetworkCallback networkCallback) {
-        remoteDataSourceAPI.networkCountry(networkCallback);
+    public Observable getCountry() {
+        return  remoteDataSourceAPI.networkCountry();
+    }
 
+    @Override
+    public Observable getIngredients() {
+        return remoteDataSourceAPI.networkIngredient();
+    }
+
+    @Override
+    public Observable getByMealName(String mealName) {
+        return  remoteDataSourceAPI.networkGetMealByName(mealName);
     }
 }

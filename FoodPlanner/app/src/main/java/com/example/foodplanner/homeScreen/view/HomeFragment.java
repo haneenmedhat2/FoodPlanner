@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment implements HomeView,onMealClickListen
         recyclerViewCountry.setAdapter(countryAdapter);
         recyclerViewCountry.setHasFixedSize(true);
         countryLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        //presenterImp.getCountry();
+        presenterImp.getCountry();
 
 
     }
@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment implements HomeView,onMealClickListen
     }
 
     @Override
-    public void getCountry(List<Country> countryList) {
+    public void getCountry(List<Meals> countryList) {
         countryAdapter.setList(countryList);
         countryAdapter.notifyDataSetChanged();
     }

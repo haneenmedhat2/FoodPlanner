@@ -1,11 +1,16 @@
 package com.example.foodplanner.model;
 
-import com.example.foodplanner.network.NetworkCallback;
+import io.reactivex.rxjava3.core.Observable;
 
 public interface RepositoryInterface {
-    public void getRandomMeal(NetworkCallback networkCallback);
+    public Observable getRandomMeal();
 
-    public void getCategories(NetworkCallback networkCallback);
+    public Observable getCategories();
 
-    public void getCountry(NetworkCallback networkCallback);
+    public Observable getCountry();
+
+    public Observable getIngredients();
+
+    public Observable getByMealName(String mealName);
+
 }

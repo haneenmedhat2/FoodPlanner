@@ -1,9 +1,15 @@
 package com.example.foodplanner.network;
 
+import io.reactivex.rxjava3.core.Observable;
+
 public interface RemoteDataSource {
-    public void networkRandomMeals(NetworkCallback networkCallback);
+    public Observable networkRandomMeals();
 
-    public void networkCategories(NetworkCallback networkCallback);
+    public Observable networkCategories();
 
-    public void networkCountry(NetworkCallback networkCallback);
+    public Observable networkCountry();
+
+    public Observable networkIngredient();
+
+    public Observable networkGetMealByName(String mealName);
 }

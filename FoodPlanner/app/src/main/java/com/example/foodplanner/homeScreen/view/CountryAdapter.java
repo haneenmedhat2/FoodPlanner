@@ -13,22 +13,54 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
-import com.example.foodplanner.model.Categories;
 import com.example.foodplanner.model.Country;
+import com.example.foodplanner.model.Meals;
 
 import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryHolder>{
-     List<Country> countryList;
-    Context context;
+      private List<Meals> countryList;
+    private  Context context;
     private static final String TAG = "CountryAdapter";
 
-    public CountryAdapter(List<Country> countryList, Context context) {
+    String [] arrayImage={
+          "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_the_United_States_%281795-1818%29.jpg",
+        "https://www.worldometers.info/img/flags/uk-flag.gif",
+        "https://www.worldometers.info/img/flags/ca-flag.gif",
+        "https://www.worldometers.info/img/flags/ch-flag.gif",
+        "https://www.worldometers.info/img/flags/hr-flag.gif",
+        "https://www.worldometers.info/img/flags/nl-flag.gif",
+        "https://www.worldometers.info//img/flags/small/tn_eg-flag.gif",
+            "https://www.mappng.com/png-flags/2021-07-12542Philippines-flag.png",
+        "https://www.worldometers.info//img/flags/small/tn_fr-flag.gif",
+        "https://www.worldometers.info/img/flags/gr-flag.gif",
+        "https://www.worldometers.info/img/flags/in-flag.gif",
+        "https://www.worldometers.info/img/flags/ei-flag.gif",
+        "https://www.worldometers.info/img/flags/it-flag.gif",
+        "https://www.worldometers.info/img/flags/jm-flag.gif",
+        "https://www.worldometers.info/img/flags/ja-flag.gif",
+        "https://www.worldometers.info/img/flags/ke-flag.gif",
+        "https://www.worldometers.info/img/flags/my-flag.gif",
+        "https://www.worldometers.info/img/flags/mx-flag.gif",
+        "https://www.worldometers.info/img/flags/mo-flag.gif",
+        "https://www.worldometers.info/img/flags/pl-flag.gif",
+       "https://www.worldometers.info/img/flags/po-flag.gif",
+        "https://www.worldometers.info/img/flags/rs-flag.gif",
+        "https://www.worldometers.info/img/flags/sp-flag.gif",
+        "https://www.worldometers.info/img/flags/th-flag.gif",
+        "https://www.worldometers.info/img/flags/ts-flag.gif",
+        "https://www.worldometers.info/img/flags/tu-flag.gif",
+        "https://www.freepnglogos.com/uploads/globe-png/globe-icon-aquanox-icons-softiconsm-34.png",
+        "https://www.worldometers.info/img/flags/vm-flag.gif"
+    };
+
+
+    public CountryAdapter(List<Meals> countryList, Context context) {
         this.countryList = countryList;
         this.context = context;
     }
 
-    public void setList(List<Country> countryUpdate){
+    public void setList(List<Meals> countryUpdate){
         this.countryList= countryUpdate;
     }
 
@@ -45,13 +77,10 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
     @Override
     public void onBindViewHolder(@NonNull CountryHolder holder, int position) {
-        Country country = countryList.get(position);
+        Meals country = countryList.get(position);
         holder.tvTitle.setText(country.getStrArea());
-
-        String url = "https://www.worldometers.info/img/flags/us-flag.gif";
-
-        Glide.with(context).load(url).into(holder.ivPhoto);
-
+        Glide.with(context).load(arrayImage[position]).error(R.drawable.loading)
+                .into(holder.ivPhoto);
         Log.i(TAG, "onBindViewHolder:country ");
     }
 
@@ -66,8 +95,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
         ImageView ivPhoto;
         public CountryHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvCountryTitle);
-            ivPhoto = itemView.findViewById(R.id.imCountry);
+            tvTitle = itemView.findViewById(R.id.tvCountryName);
+            ivPhoto = itemView.findViewById(R.id.image);
         }
     }
 }

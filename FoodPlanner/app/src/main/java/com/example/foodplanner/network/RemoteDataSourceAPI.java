@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.foodplanner.model.CategoriesResponse;
 import com.example.foodplanner.model.CountryResponse;
+import com.example.foodplanner.model.IngredientResponse;
 import com.example.foodplanner.model.MealResponse;
 import com.example.foodplanner.model.Meals;
 import com.google.gson.Gson;
@@ -18,6 +19,8 @@ import java.util.List;
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -65,79 +68,35 @@ public class RemoteDataSourceAPI implements RemoteDataSource{
         return client;
     }
 
+
+
     @Override
-    public void networkRandomMeals(NetworkCallback networkCallback) {
-
-      /*
-        Call<MealResponse> mealModelResponseSingle= mealService.getRandomMeals();
-        mealModelResponseSingle.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .onErrorComplete()
-                .repeat(5)
-                .doOnNext(e-> list.addAll(e.getMeal()))
-                .doOnComplete(()->networkCallback.onSuccessMeal(list))
-                .subscribe();*/
-        Call<MealResponse> mealModelResponseSingle= mealService.getRandomMeals();
-        mealModelResponseSingle.enqueue(new Callback<MealResponse>() {
-            @Override
-            public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
-                if (response.isSuccessful()) {
-                    networkCallback.onSuccessMeal(response.body().getMeal());
-                    Log.i(TAG, "onResponse:network Random Meal "+response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MealResponse> call, Throwable t) {
-                Log.i(TAG, "onFailure: " + t.getMessage());
-                networkCallback.onFaild(t.getMessage());
-            }
-
-        });
+    public Observable networkRandomMeals() {
+        Observable <MealResponse> mealResponseObservable=mealService.getRandomMeals().subscribeOn(Schedulers.io());
+        return mealResponseObservable;
     }
 
     @Override
-    public void networkCategories(NetworkCallback networkCallback) {
-
-        Call<CategoriesResponse> call = mealService.getCategories();
-
-        call.enqueue(new Callback<CategoriesResponse>() {
-            @Override
-            public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
-                if (response.isSuccessful()) {
-                    networkCallback.onSuccessCategories(response.body().getCategories());
-                    Log.i(TAG, "onResponse:networkCategories "+response.body());
-                }
-            }
-            @Override
-            public void onFailure(Call<CategoriesResponse> call, Throwable t) {
-                Log.i(TAG, "onFailure: " + t.getMessage());
-                networkCallback.onFaild(t.getMessage());
-            }
-        });
-
+    public Observable networkCategories() {
+        Observable<CategoriesResponse> categoriesResponseObservable = mealService.getCategories().subscribeOn(Schedulers.io());
+        return categoriesResponseObservable;
     }
 
     @Override
-    public void networkCountry(NetworkCallback networkCallback) {
+    public Observable networkCountry() {
+        Observable<MealResponse> mealResponseObservable = mealService.getCountry("list").subscribeOn(Schedulers.io());
+        return mealResponseObservable;
+    }
 
-        Call<CountryResponse> call = mealService.getCountry("list");
+    @Override
+    public Observable networkIngredient() {
+        Observable<IngredientResponse> ingredientResponseObservable= mealService.getIngredients("list").subscribeOn(Schedulers.io());
+        return ingredientResponseObservable;
+    }
 
-        call.enqueue(new Callback<CountryResponse>() {
-            @Override
-            public void onResponse(Call<CountryResponse> call, Response<CountryResponse> response) {
-                if (response.isSuccessful()&& response.body() != null) {
-                    networkCallback.onSuccessCountry(response.body().getCountries());
-                    Log.i(TAG, "onResponse: Country "+response.body());
-                }
-                else {
-                    networkCallback.onFaild("Received null country list");
-                }
-            }
-            @Override
-            public void onFailure(Call<CountryResponse> call, Throwable t) {
-                Log.i(TAG, "onFailure: Country" + t.getMessage());
-                networkCallback.onFaild(t.getMessage());
-            }
-        });
+    @Override
+    public Observable networkGetMealByName(String mealName) {
+        Observable<MealResponse> mealResponseObservable =mealService.getByMealName(mealName).subscribeOn(Schedulers.io());
+        return mealResponseObservable;
     }
 }

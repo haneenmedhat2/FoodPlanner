@@ -11,6 +11,6 @@ public interface HomeView {
 
     void getCategories(List<Categories> list);
 
-    void getCountry(List<Country> countryList);
+    void getCountry(List<Meals> countryList);
 
 }
