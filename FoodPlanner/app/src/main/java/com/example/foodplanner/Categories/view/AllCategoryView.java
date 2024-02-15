@@ -8,4 +8,5 @@ import java.util.List;
 public interface AllCategoryView {
 
     public void getByCategoryName(List<Meals> meals);
+    public void addData(Meals meals);
 }

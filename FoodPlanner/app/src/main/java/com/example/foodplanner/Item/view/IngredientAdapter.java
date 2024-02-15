@@ -5,8 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,12 +26,13 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     private List<IngredientItem> meals;
     private Context context;
 
-    private onMealClickListener listener;
+    private OnIngredientClickListener listener;
     private static final String TAG = "RandomAdapter";
 
-    public IngredientAdapter(List<IngredientItem> meals, Context context) {
+    public IngredientAdapter(List<IngredientItem> meals, Context context,OnIngredientClickListener listener) {
         this.meals = meals;
         this.context = context;
+        this.listener=listener;
     }
 
     public void setIngredient(List<IngredientItem> meals){ this.meals=meals;}
@@ -54,6 +57,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.loading)
                 .into(holder.ivPhoto);
+
+
     }
 
     @Override
@@ -69,6 +74,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvIngredientType);
             ivPhoto = itemView.findViewById(R.id.imageIngredient);
+
+
         }
     }
 }

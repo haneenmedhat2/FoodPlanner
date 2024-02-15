@@ -74,6 +74,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public Completable deleteMeal(Meals meals) {
+        return mealLocalDataSourceImp.deleteMeal(meals);
+    }
+
+    @Override
     public Flowable<List<Meals>> getAllMeals() {
         return mealLocalDataSourceImp.getAllStoredMeals();
     }

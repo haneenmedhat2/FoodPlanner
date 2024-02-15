@@ -2,10 +2,13 @@ package com.example.foodplanner.country.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -25,10 +28,12 @@ public class AllCountryAdapter extends  RecyclerView.Adapter<AllCountryAdapter.A
 
     Context context;
     List<Meals> meals;
+    OnCountryClickListener listener;
 
-    public AllCountryAdapter(Context context, List<Meals> meals) {
+    public AllCountryAdapter(Context context, List<Meals> meals,OnCountryClickListener listener) {
         this.context = context;
         this.meals = meals;
+        this.listener=listener;
     }
 
     public void setMeals(List<Meals> meals) {
@@ -61,6 +66,14 @@ public class AllCountryAdapter extends  RecyclerView.Adapter<AllCountryAdapter.A
             }
         });
 
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMealClick(meals1);
+                Toast.makeText(v.getContext(),"Data added successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -72,12 +85,15 @@ public class AllCountryAdapter extends  RecyclerView.Adapter<AllCountryAdapter.A
         TextView textView;
         CircleImageView circleImageView;
         CardView cardView;
+        ImageButton button;
 
         public AllCountryHolder(@NonNull View itemView) {
             super(itemView);
             textView=itemView.findViewById(R.id.tvCountryType);
             circleImageView=itemView.findViewById(R.id.imageAllCountry);
             cardView=itemView.findViewById(R.id.allCountryCard);
+            button=itemView.findViewById(R.id.removefav);
+
         }
     }
 }

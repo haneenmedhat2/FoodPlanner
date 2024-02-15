@@ -35,7 +35,7 @@ public class MealLocalDataSourceImp implements MealLocalDataSource{
 
     @Override
     public Completable deleteMeal(Meals meals) {
-        return null;
+        return  dao.deleteMeal(meals).subscribeOn(Schedulers.io());
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.foodplanner.favorite.view;
 
-public interface OnFavClickListener {
+import com.example.foodplanner.model.Meals;
 
+public interface OnFavClickListener {
+    public void onMealClickRemove(Meals meal);
 }

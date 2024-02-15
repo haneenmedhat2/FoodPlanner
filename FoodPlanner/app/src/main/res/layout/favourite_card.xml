@@ -49,7 +49,7 @@
             tools:targetApi="ice_cream_sandwich" />
 
         <ImageButton
-            android:id="@+id/removefav"
+            android:id="@+id/removeFromfav"
             android:layout_width="30dp"
             android:layout_height="32dp"
             android:layout_marginBottom="24dp"

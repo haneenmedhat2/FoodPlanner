@@ -22,6 +22,7 @@ public interface RepositoryInterface {
     public Observable getByCountryName(String countryName);
 
     public Completable addMeal(Meals meals);
+    public Completable deleteMeal(Meals meals);
 
      public Flowable<List<Meals>> getAllMeals();
 

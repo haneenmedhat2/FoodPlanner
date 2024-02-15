@@ -60,19 +60,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.AllFav
                 .error(R.drawable.loading)
                 .into(holder.circleImageView);
 
-    /*    holder.button.setOnClickListener(new View.OnClickListener() {
+      holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onMealClick(meal);
+                listener.onMealClickRemove(meal);
                 Toast.makeText(v.getContext(),"Data Removed successfully",Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return meals.size();
     }
 
     class AllFavHolder extends RecyclerView.ViewHolder{
@@ -82,7 +82,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.AllFav
 
         public AllFavHolder(@NonNull View itemView) {
             super(itemView);
-            button=itemView.findViewById(R.id.removefav);
+            button=itemView.findViewById(R.id.removeFromfav);
             textView= itemView.findViewById(R.id.tvFavType);
             circleImageView= itemView.findViewById(R.id.imageAllFav);
         }

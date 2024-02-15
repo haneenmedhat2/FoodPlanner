@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodplanner.Categories.presenter.AllCategoryImp;
 import com.example.foodplanner.R;
@@ -25,7 +26,7 @@ import com.example.foodplanner.network.RemoteDataSourceAPI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllCategoriesFragment extends Fragment implements AllCategoryView {
+public class AllCategoriesFragment extends Fragment implements AllCategoryView,OnCategoryclickListener {
 RecyclerView recyclerView;
 AllCategoriesAdapter adapter;
 LinearLayoutManager linearLayoutManager;
@@ -45,8 +46,8 @@ AllCategoryImp categoryImp;
         categoryImp= new AllCategoryImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(getContext()), MealLocalDataSourceImp.getInstance(getContext()) ,view.getContext()),this);
         categoryImp.getMealByCategory(categoryName);
         recyclerView= view.findViewById(R.id.rvAllCat);
-        adapter=new AllCategoriesAdapter(view.getContext(),new ArrayList<>());
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+        adapter=new AllCategoriesAdapter(view.getContext(),new ArrayList<>(),this);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
     }
@@ -56,5 +57,16 @@ AllCategoryImp categoryImp;
         adapter.setAllCategory(meals);
         adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void addData(Meals meals) {
+        categoryImp.addToFav(meals);
+        Toast.makeText(getContext(),"Data added successfully",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMealClick(Meals meal) {
+        addData(meal);
     }
 }

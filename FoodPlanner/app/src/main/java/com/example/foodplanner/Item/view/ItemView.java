@@ -7,4 +7,5 @@ import java.util.List;
 public interface ItemView {
 
     public  void getByMealName(List<Meals> list);
+    public void addData(Meals meals);
 }

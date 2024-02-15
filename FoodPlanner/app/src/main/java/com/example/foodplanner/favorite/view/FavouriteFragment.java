@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.example.foodplanner.country.presenter.AllCountryImp;
 import com.example.foodplanner.country.view.AllCountryAdapter;
 import com.example.foodplanner.db.MealLocalDataSourceImp;
 import com.example.foodplanner.favorite.presenter.FavoritePresenterImp;
+import com.example.foodplanner.homeScreen.view.CountryAdapter;
 import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.RemoteDataSourceAPI;
@@ -42,13 +44,16 @@ public class FavouriteFragment extends Fragment implements FavoriteView,OnFavCli
         super.onViewCreated(view, savedInstanceState);
         presenterImp= new FavoritePresenterImp(this, Repository.getInstance(RemoteDataSourceAPI.getInstance(getContext()),
                 MealLocalDataSourceImp.getInstance(getContext()),view.getContext()));
+
+        recyclerView= view.findViewById(R.id.rvAllFav);
+        gridLayoutManager=new GridLayoutManager(getContext(),2,RecyclerView.HORIZONTAL,false);
+        adapter=new FavoriteAdapter(getContext(),this,new ArrayList<>());
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setAdapter(adapter);
         presenterImp.getAllFav();
 
-        recyclerView= view.findViewById(R.id.rvAllCountry);
-        gridLayoutManager=new GridLayoutManager(getContext(),2,RecyclerView.HORIZONTAL,false);////
-        recyclerView.setLayoutManager(gridLayoutManager);
-        adapter=new FavoriteAdapter(getContext(),this,new ArrayList<>());
-        recyclerView.setAdapter(adapter);
+
+
 
 
     }
@@ -58,5 +63,15 @@ public class FavouriteFragment extends Fragment implements FavoriteView,OnFavCli
         adapter.setMeals(meals);
         adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void removeMeal(Meals meals) {
+        presenterImp.deleteFav(meals);
+    }
+
+    @Override
+    public void onMealClickRemove(Meals meal) {
+        removeMeal(meal);
     }
 }

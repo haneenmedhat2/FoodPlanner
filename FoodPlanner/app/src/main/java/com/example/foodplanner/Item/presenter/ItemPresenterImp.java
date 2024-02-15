@@ -1,7 +1,10 @@
 package com.example.foodplanner.Item.presenter;
 
+import android.util.Log;
+
 import com.example.foodplanner.Item.view.ItemView;
 import com.example.foodplanner.model.MealResponse;
+import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.RepositoryInterface;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -9,10 +12,12 @@ import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ItemPresenterImp implements ItemPresenterInterface{
     RepositoryInterface repo;
     ItemView view;
+    private static final String TAG = "ItemPresenterImp";
 
     public ItemPresenterImp(RepositoryInterface repo, ItemView view) {
         this.repo = repo;
@@ -45,6 +50,19 @@ public class ItemPresenterImp implements ItemPresenterInterface{
                     public void onComplete() {
 
                     }
+                });
+    }
+
+    @Override
+    public void addToFav(Meals meals) {
+        repo.addMeal(meals)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> {
+                    Log.i(TAG, "Meal added to favorites successfully");
+
+                }, error -> {
+                    Log.i(TAG, "Error adding Meal to favorites");
                 });
     }
 }

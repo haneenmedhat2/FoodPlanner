@@ -1,6 +1,7 @@
 package com.example.foodplanner.homeScreen.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.foodplanner.homeScreen.view.HomeView;
 import com.example.foodplanner.model.CategoriesResponse;
@@ -115,6 +116,7 @@ public class HomePresenterImp implements HomePresenter{
        .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(() -> {
                     Log.i(TAG, "Meal added to favorites successfully");
+
 
                 }, error -> {
                     Log.i(TAG, "Error adding Meal to favorites");

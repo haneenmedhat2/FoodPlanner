@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface AllCountryView {
     public void getCountryName(List<Meals> list);
+    public void addData(Meals meals);
+
+
 }

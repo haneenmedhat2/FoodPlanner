@@ -12,10 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.foodplanner.R;
 import com.example.foodplanner.country.presenter.AllCountryImp;
 import com.example.foodplanner.db.MealLocalDataSourceImp;
+import com.example.foodplanner.homeScreen.presenter.HomePresenterImp;
 import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.network.RemoteDataSourceAPI;
@@ -23,13 +25,14 @@ import com.example.foodplanner.network.RemoteDataSourceAPI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllCountryFragment extends Fragment implements AllCountryView {
+public class AllCountryFragment extends Fragment implements AllCountryView,OnCountryClickListener {
     private static final String TAG = "AllCountryFragment";
 
     AllCountryImp countryImp;
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
     AllCountryAdapter adapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,8 +52,12 @@ public class AllCountryFragment extends Fragment implements AllCountryView {
         recyclerView= view.findViewById(R.id.rvAllCountry);
         gridLayoutManager=new GridLayoutManager(getContext(),2,RecyclerView.HORIZONTAL,false);////
         recyclerView.setLayoutManager(gridLayoutManager);
-        adapter=new AllCountryAdapter(getContext(),new ArrayList<>());
+        adapter=new AllCountryAdapter(getContext(),new ArrayList<>(),this);
         recyclerView.setAdapter(adapter);
+
+
+
+
 
 
     }
@@ -60,5 +67,16 @@ public class AllCountryFragment extends Fragment implements AllCountryView {
         adapter.setMeals(list);
         adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void addData(Meals meals) {
+        countryImp.addToFav(meals);
+        Toast.makeText(getContext(),"Data added successfully",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMealClick(Meals meal) {
+      addData(meal);
     }
 }

@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ItemActivity extends AppCompatActivity implements ItemView{
+public class ItemActivity extends AppCompatActivity implements ItemView,OnIngredientClickListener{
     ItemPresenterImp presenterImp;
     String mealName;
     IngredientAdapter adapter;
@@ -40,7 +42,9 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
     RecyclerView recyclerView;
     TextView itemName,itemPageMealSteps;
     CircleImageView image;
-    WebView webView;
+
+    ImageButton button;
+
 
     private static final String TAG = "ItemActivity";
 
@@ -50,6 +54,10 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
     List<IngredientItem> ingredientItems;
     ActionBar actionBar;
 
+    Meals meals;
+    Meals myMeal= new Meals();
+
+    OnIngredientClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +75,7 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
 
         recyclerView= findViewById(R.id.ingredientRecyclerView);
         linearLayoutManager= new LinearLayoutManager(this);
-        adapter= new IngredientAdapter(new ArrayList<>(),this);
+        adapter= new IngredientAdapter(new ArrayList<>(),this,this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
@@ -81,12 +89,24 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
         actionBar= getSupportActionBar ();
         actionBar.hide();
 
+        button=findViewById(R.id.btnAddFav);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMealClick(myMeal);
+                Toast.makeText(v.getContext(),"Data added successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
     }
 
 
     @Override
     public void getByMealName(List<Meals> list) {
-        Meals meals= list.get(0);
+         meals= list.get(0);
+         myMeal=meals;
 
         itemName.setText(meals.getStrMeal());
         itemPageMealSteps.setText(meals.getStrInstructions());
@@ -134,8 +154,22 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
         ingredientItems.add(new IngredientItem( meals.getStrIngredient6(),  img6) );
         ingredientItems.add(new IngredientItem( meals.getStrIngredient7(),  img7) );
 
+
+
+
         adapter.setIngredient(ingredientItems);
         adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void addData(Meals meals) {
+        presenterImp.addToFav(meals);
+        Toast.makeText(this,"Data added successfully",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMealClick(Meals meal) {
+        addData(meal);
     }
 }

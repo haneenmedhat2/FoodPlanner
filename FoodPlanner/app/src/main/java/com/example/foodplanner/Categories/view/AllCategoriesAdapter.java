@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -25,11 +27,14 @@ import java.util.List;
 public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdapter.AllCategoryHolder>{
     Context context;
     List<Meals> meals;
+
+    OnCategoryclickListener listener;
     private static final String TAG = "AllCategoriesAdapter";
 
-    public AllCategoriesAdapter(Context context, List<Meals> meals) {
+    public AllCategoriesAdapter(Context context, List<Meals> meals, OnCategoryclickListener listener) {
         this.context = context;
         this.meals = meals;
+        this.listener=listener;
     }
 
     public void setAllCategory(List<Meals> meals){
@@ -62,6 +67,14 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
             }
         });
 
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMealClick(meals1);
+                Toast.makeText(v.getContext(),"Data added successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -74,11 +87,14 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
         TextView tvTitle;
         ImageView ivPhoto;
         CardView cardView;
+        ImageButton button;
+
         public AllCategoryHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvCatType);
             ivPhoto = itemView.findViewById(R.id.imageAllCat);
             cardView= itemView.findViewById(R.id.allCatCard);
+            button=itemView.findViewById(R.id.removefav);
 
         }
     }

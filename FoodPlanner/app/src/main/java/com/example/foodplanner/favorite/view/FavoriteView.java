@@ -7,4 +7,5 @@ import java.util.List;
 public interface FavoriteView {
 
     public void ShowAll(List<Meals> meals);
+    public void removeMeal(Meals meals);
 }
