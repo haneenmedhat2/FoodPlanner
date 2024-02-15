@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.foodplanner.Categories.presenter.AllCategoryImp;
 import com.example.foodplanner.R;
+import com.example.foodplanner.db.MealLocalDataSourceImp;
 import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.Repository;
 import com.example.foodplanner.model.RepositoryInterface;
@@ -41,7 +42,7 @@ AllCategoryImp categoryImp;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         String categoryName= getArguments().getString("key_string_value");
-        categoryImp= new AllCategoryImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(getContext()), view.getContext()),this);
+        categoryImp= new AllCategoryImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(getContext()), MealLocalDataSourceImp.getInstance(getContext()) ,view.getContext()),this);
         categoryImp.getMealByCategory(categoryName);
         recyclerView= view.findViewById(R.id.rvAllCat);
         adapter=new AllCategoriesAdapter(view.getContext(),new ArrayList<>());

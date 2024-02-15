@@ -13,4 +13,6 @@ public interface HomeView {
 
     void getCountry(List<Meals> countryList);
 
+    public void addData(Meals meals);
+
 }

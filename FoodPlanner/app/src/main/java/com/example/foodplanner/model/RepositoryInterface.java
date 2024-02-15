@@ -1,5 +1,9 @@
 package com.example.foodplanner.model;
 
+import java.util.List;
+
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 
 public interface RepositoryInterface {
@@ -14,5 +18,13 @@ public interface RepositoryInterface {
     public Observable getByMealName(String mealName);
 
     public Observable getByCategoryName(String categoryName);
+
+    public Observable getByCountryName(String countryName);
+
+    public Completable addMeal(Meals meals);
+
+     public Flowable<List<Meals>> getAllMeals();
+
+
 
 }

@@ -1,7 +1,16 @@
 package com.example.foodplanner.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "meal")
 public class Meals {
-private String idMeal;
+
+
+    @PrimaryKey
+    @NonNull
+    private String idMeal;
     private String strMeal ;
     private String strDrinkAlternate ;
     private String strCategory  ;
@@ -540,4 +549,6 @@ private String idMeal;
     public void setDateModified(String dateModified) {
         this.dateModified = dateModified;
     }
+
+
 }

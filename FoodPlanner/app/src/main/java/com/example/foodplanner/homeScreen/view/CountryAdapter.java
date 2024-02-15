@@ -1,6 +1,7 @@
 package com.example.foodplanner.homeScreen.view;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
+import com.example.foodplanner.country.view.AllCountryFragment;
 import com.example.foodplanner.model.Country;
 import com.example.foodplanner.model.Meals;
 
@@ -82,6 +86,19 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
         Glide.with(context).load(arrayImage[position]).error(R.drawable.loading)
                 .into(holder.ivPhoto);
         Log.i(TAG, "onBindViewHolder:country ");
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle bundle=new Bundle();
+                bundle.putString("MEAL_AREA", country.getStrArea());
+                Navigation.findNavController(v).navigate(R.id.action_homeFragment2_to_allCountryFragment,bundle);
+
+
+
+            }
+        });
     }
 
     @Override
@@ -93,10 +110,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
         TextView tvTitle;
         ImageView ivPhoto;
+        CardView cardView;
         public CountryHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvCountryName);
             ivPhoto = itemView.findViewById(R.id.image);
+            cardView = itemView.findViewById(R.id.countryCard);
         }
     }
 }

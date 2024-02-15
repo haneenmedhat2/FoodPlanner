@@ -1,5 +1,6 @@
 package com.example.foodplanner.homeScreen.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -51,7 +53,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MealHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MealHolder holder,  int position) {
 
         Meals meal = meals.get(position);
         holder.tvTitle.setText(meal.getStrMeal());
@@ -72,10 +74,11 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
             @Override
             public void onClick(View v) {
                 listener.onMealClick(meal);
+                Log.i(TAG, "onClick: Button clicked");
+                Toast.makeText(v.getContext(),"Data added successfully",Toast.LENGTH_SHORT).show();
             }
         });
 
-        Log.i(TAG, "onBindViewHolder: ");
 
 
     }
@@ -97,7 +100,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvCatTitle);
             ivPhoto = itemView.findViewById(R.id.circularImageView);
-            add = itemView.findViewById(R.id.btnAdd);
+            add = itemView.findViewById(R.id.btnAddToFav);
             cardView=itemView.findViewById(R.id.card_inspire);
         }
     }

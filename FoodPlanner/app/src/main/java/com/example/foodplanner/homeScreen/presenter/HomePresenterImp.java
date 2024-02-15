@@ -13,9 +13,11 @@ import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class HomePresenterImp implements HomePresenter{
 
@@ -103,6 +105,19 @@ public class HomePresenterImp implements HomePresenter{
                     public void onComplete() {
 
                     }
+                });
+    }
+
+    @Override
+    public void addMeals(Meals meals) {
+        repo.addMeal(meals)
+                .subscribeOn(Schedulers.io())
+       .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> {
+                    Log.i(TAG, "Meal added to favorites successfully");
+
+                }, error -> {
+                    Log.i(TAG, "Error adding Meal to favorites");
                 });
     }
 

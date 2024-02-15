@@ -12,10 +12,13 @@
         <action
             android:id="@+id/action_homeFragment2_to_allCategoriesFragment"
             app:destination="@id/allCategoriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_allCountryFragment"
+            app:destination="@id/allCountryFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment2"
-        android:name="com.example.foodplanner.view.FavouriteFragment"
+        android:name="com.example.foodplanner.favorite.view.FavouriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment
@@ -35,6 +38,15 @@
         tools:layout="@layout/fragment_all_categories" >
         <action
             android:id="@+id/action_allCategoriesFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/allCountryFragment"
+        android:name="com.example.foodplanner.country.view.AllCountryFragment"
+        android:label="fragment_all_country"
+        tools:layout="@layout/fragment_all_country" >
+        <action
+            android:id="@+id/action_allCountryFragment_to_homeFragment2"
             app:destination="@id/homeFragment2" />
     </fragment>
 </navigation>

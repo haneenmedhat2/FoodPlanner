@@ -11,11 +11,13 @@ import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.Item.presenter.ItemPresenterImp;
 import com.example.foodplanner.R;
+import com.example.foodplanner.db.MealLocalDataSourceImp;
 import com.example.foodplanner.model.IngredientItem;
 import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.Repository;
@@ -71,7 +73,7 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
         recyclerView.setHasFixedSize(true);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
 
-        presenterImp= new ItemPresenterImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(this),ItemActivity.this),this);
+        presenterImp= new ItemPresenterImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(this), MealLocalDataSourceImp.getInstance(this),ItemActivity.this),this);
         presenterImp.getByMealName(mealName);
 
         ingredientItems= new ArrayList<>();
@@ -96,21 +98,25 @@ public class ItemActivity extends AppCompatActivity implements ItemView{
 
 
         Log.i(TAG, "getByMealName: "+meals.getStrYoutube() );
-        videoSplit =meals.getStrYoutube().split("=");
 
-        videoId =videoSplit[1];
-        Log.i(TAG, "getByMealName: "+videoId);
-        System.out.println(videoId);
+        if(!meals.getStrYoutube().equals("")) {
+            videoSplit = meals.getStrYoutube().split("=");
+            videoId = videoSplit[1];
+            Log.i(TAG, "getByMealName: " + videoId);
+            System.out.println(videoId);
+            getLifecycle().addObserver(videoView);
 
-        getLifecycle().addObserver(videoView);
+            videoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                @Override
+                public void onReady(@NonNull YouTubePlayer youTubePlayer) {
 
-        videoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-            @Override
-            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-
-                youTubePlayer.loadVideo(videoId, 0);
+                    youTubePlayer.loadVideo(videoId, 0);
+                }
+            });
+        } else{
+                Toast.makeText(this,"Error In Youtube Video!",Toast.LENGTH_SHORT).show();
             }
-        });
+
 
        String img1="https://www.themealdb.com/images/ingredients/"+meals.getStrIngredient1()+ ".png";
         String img2="https://www.themealdb.com/images/ingredients/"+meals.getStrIngredient2()+ ".png";

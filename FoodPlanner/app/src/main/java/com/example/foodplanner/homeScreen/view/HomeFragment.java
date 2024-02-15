@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foodplanner.R;
+import com.example.foodplanner.db.MealLocalDataSourceImp;
 import com.example.foodplanner.homeScreen.presenter.HomePresenterImp;
 import com.example.foodplanner.model.Categories;
 import com.example.foodplanner.model.Country;
@@ -25,9 +27,9 @@ import java.util.List;
 
 public class HomeFragment extends Fragment implements HomeView,onMealClickListener{
 
+    HomePresenterImp presenterImp;
     RecyclerView recyclerView;
     RandomAdapter randomAdapter;
-    HomePresenterImp presenterImp;
     LinearLayoutManager mealLayoutManager;
 
 
@@ -53,8 +55,7 @@ public class HomeFragment extends Fragment implements HomeView,onMealClickListen
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        presenterImp=new HomePresenterImp(this, Repository.getInstance(RemoteDataSourceAPI.getInstance(getContext()),
-                view.getContext()));
+        presenterImp=new HomePresenterImp(this, Repository.getInstance(RemoteDataSourceAPI.getInstance(getContext()), MealLocalDataSourceImp.getInstance(getContext()),view.getContext()));
 
         recyclerView = view.findViewById(R.id.rvDaily);
         mealLayoutManager = new LinearLayoutManager(view.getContext());
@@ -107,7 +108,13 @@ public class HomeFragment extends Fragment implements HomeView,onMealClickListen
     }
 
     @Override
+    public void addData(Meals meals) {
+        presenterImp.addMeals(meals);
+    }
+
+    @Override
     public void onMealClick(Meals meal) {
+        addData(meal);
 
     }
 }
