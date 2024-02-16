@@ -27,5 +27,13 @@ public interface RepositoryInterface {
      public Flowable<List<Meals>> getAllMeals();
 
 
+     //plan
+     public Completable inserPlan(Plan plan);
+    public Completable deletePlan(Plan plan);
+
+    public Flowable<List<Plan>> getPlan();
+
+
+
 
 }

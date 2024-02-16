@@ -9,21 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.Item.presenter.ItemPresenterImp;
 import com.example.foodplanner.R;
+import com.example.foodplanner.WeaklyPlan.view.DayChooserDialog;
 import com.example.foodplanner.db.MealLocalDataSourceImp;
 import com.example.foodplanner.model.IngredientItem;
 import com.example.foodplanner.model.Meals;
+import com.example.foodplanner.model.Plan;
 import com.example.foodplanner.model.Repository;
-import com.example.foodplanner.model.RepositoryInterface;
 import com.example.foodplanner.network.RemoteDataSourceAPI;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -40,7 +38,7 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
     IngredientAdapter adapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
-    TextView itemName,itemPageMealSteps;
+    TextView itemName,itemPageMealSteps,countryName;
     CircleImageView image;
 
     ImageButton button;
@@ -57,7 +55,11 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
     Meals meals;
     Meals myMeal= new Meals();
 
+    ImageButton btnCalender;
+
     OnIngredientClickListener listener;
+
+    Plan plan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +70,9 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
         }
 
         itemName= findViewById(R.id.itemName);
+        countryName= findViewById(R.id.countryName);
         itemPageMealSteps=findViewById(R.id.itemPageMealSteps);
         image= findViewById(R.id.image);
-        //webView= findViewById(R.id.videoView);
         videoView=findViewById(R.id.videoView);
 
         recyclerView= findViewById(R.id.ingredientRecyclerView);
@@ -83,6 +85,8 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
 
         presenterImp= new ItemPresenterImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(this), MealLocalDataSourceImp.getInstance(this),ItemActivity.this),this);
         presenterImp.getByMealName(mealName);
+
+        plan= new Plan();
 
         ingredientItems= new ArrayList<>();
 
@@ -98,10 +102,28 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
             }
         });
 
-
-
+        btnCalender= findViewById(R.id.btnAddCalender);
+        btnCalender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDayChooserDialog();
+                Log.i(TAG, "onClick: Button calender");
+            }
+        });
     }
 
+    private void showDayChooserDialog() {
+        DayChooserDialog dialog = new DayChooserDialog();
+        dialog.setOnDaySelectedListener(new DayChooserDialog.OnDaySelectedListener() {
+            @Override
+            public void onDaySelected(String selectedDay) {
+                Toast.makeText(ItemActivity.this, "Selected Day: " + selectedDay, Toast.LENGTH_SHORT).show();
+                plan.setDay(selectedDay);
+                presenterImp.inserPlan(plan);
+            }
+        });
+        dialog.show(getSupportFragmentManager(), "DayChooserDialog");
+    }
 
     @Override
     public void getByMealName(List<Meals> list) {
@@ -109,6 +131,7 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
          myMeal=meals;
 
         itemName.setText(meals.getStrMeal());
+        countryName.setText(meals.getStrArea());
         itemPageMealSteps.setText(meals.getStrInstructions());
         Glide.with(this).load(meals.getStrMealThumb())
                 .placeholder(R.drawable.loading)
@@ -153,12 +176,30 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
         ingredientItems.add(new IngredientItem( meals.getStrIngredient5(),  img5) );
         ingredientItems.add(new IngredientItem( meals.getStrIngredient6(),  img6) );
         ingredientItems.add(new IngredientItem( meals.getStrIngredient7(),  img7) );
-
-
-
-
         adapter.setIngredient(ingredientItems);
         adapter.notifyDataSetChanged();
+
+
+
+
+
+        plan.setIdMeal(meals.getIdMeal());
+        plan.setStrMeal(meals.getStrMeal()) ;
+        plan.setStrMealThumb(meals.getStrMealThumb());
+        plan.setStrArea(meals.getStrArea());
+        plan.setStrYoutube(meals.getStrYoutube());
+        plan.setStrInstructions(meals.getStrInstructions());
+       plan.setStrIngredient1(meals.getStrIngredient1());
+        plan.setStrIngredient2(meals.getStrIngredient2());
+       plan.setStrIngredient3( meals.getStrIngredient3());
+      plan.setStrIngredient4(meals.getStrIngredient4());
+      plan.setStrIngredient5(meals.getStrIngredient5());
+       plan.setStrIngredient6(meals.getStrIngredient6());
+         plan.setStrIngredient7(meals.getStrIngredient7());
+
+
+
+
 
     }
 
@@ -172,4 +213,10 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
     public void onMealClick(Meals meal) {
         addData(meal);
     }
+
+
+
 }
+
+
+

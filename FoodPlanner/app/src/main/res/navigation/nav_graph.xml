@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment2_to_allCountryFragment"
             app:destination="@id/allCountryFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_weaklyPlanFragment"
+            app:destination="@id/weaklyPlanFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment2"
@@ -49,4 +52,9 @@
             android:id="@+id/action_allCountryFragment_to_homeFragment2"
             app:destination="@id/homeFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/weaklyPlanFragment"
+        android:name="com.example.foodplanner.WeaklyPlan.view.WeaklyPlanFragment"
+        android:label="fragment_weakly_plan"
+        tools:layout="@layout/fragment_weakly_plan" />
 </navigation>

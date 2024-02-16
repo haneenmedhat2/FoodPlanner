@@ -70,6 +70,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
         TextView tvTitle;
         ImageView ivPhoto;
 
+
         public IngredientlHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvIngredientType);

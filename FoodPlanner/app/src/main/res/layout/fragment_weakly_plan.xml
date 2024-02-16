@@ -1,14 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeaklyPlanFragment">
+    tools:context=".WeaklyPlan.view.WeaklyPlanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+         <TextView
+             android:id="@+id/tvLogin"
+             android:layout_width="370dp"
+             android:layout_height="120dp"
+             android:layout_gravity="center"
+             android:layout_marginTop="40dp"
+             android:fontFamily="@font/croissant_one"
+             android:gravity="center"
+             android:shadowColor="#80000000"
+             android:shadowDx="2"
+             android:shadowDy="2"
+             android:shadowRadius="4"
+             android:text="Weakly Plan"
+             android:textColor="#D36363"
+             android:textSize="50dp"
+             android:textStyle="bold"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.39"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+
+         <TextView
+             android:id="@+id/tvSat"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="36dp"
+             android:fontFamily="@font/croissant_one"
+             android:text="Saturday:"
+             android:textColor="@color/black"
+             android:textSize="35dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.14"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/rvSat"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="36dp"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/tvSat"
+             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+             tools:listitem="@layout/plan_card"
+             tools:orientation="horizontal"
+             tools:spanCount="1" />
+
+         <View
+             android:id="@+id/line3"
+             android:layout_width="match_parent"
+             android:layout_height="5dp"
+             android:background="#17131010"
+             app:layout_constraintTop_toBottomOf="@+id/rvSat"
+             tools:layout_editor_absoluteX="0dp" />
+
+
+         <TextView
+             android:id="@+id/tvSun"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:fontFamily="@font/croissant_one"
+             android:text="Sunday:"
+             android:textColor="@color/black"
+             android:textSize="35dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.122"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/rvSat" />
+
+                         <androidx.recyclerview.widget.RecyclerView
+                             android:id="@+id/rvSun"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="10dp"
+                             app:layout_constraintTop_toBottomOf="@+id/tvSun"
+                             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                             tools:layout_editor_absoluteX="0dp"
+                             tools:listitem="@layout/plan_card"
+                             tools:orientation="horizontal"
+                             tools:spanCount="1" />
+
+                         <View
+                             android:id="@+id/line4"
+                             android:layout_width="match_parent"
+                             android:layout_height="5dp"
+                             android:layout_marginTop="13dp"
+                             android:background="#17131010"
+                             app:layout_constraintEnd_toEndOf="parent"
+                             app:layout_constraintHorizontal_bias="0.0"
+                             app:layout_constraintStart_toStartOf="parent"
+                             app:layout_constraintTop_toBottomOf="@+id/rvSun" />
+
+         <TextView
+             android:id="@+id/tvMon"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="24dp"
+             android:fontFamily="@font/croissant_one"
+             android:text="Monday:"
+             android:textColor="@color/black"
+             android:textSize="35dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.128"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/rvSun" />
+
+
+
+                                 <androidx.recyclerview.widget.RecyclerView
+                                     android:id="@+id/rvMon"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginTop="10dp"
+                                     app:layout_constraintTop_toBottomOf="@+id/tvMon"
+                                     tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                     tools:layout_editor_absoluteX="0dp"
+                                     tools:listitem="@layout/plan_card"
+                                     tools:orientation="horizontal"
+                                     tools:spanCount="1" />
+
+                                 <View
+                                     android:id="@+id/line5"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="5dp"
+                                     android:layout_marginTop="13dp"
+                                     android:background="#17131010"
+                                     app:layout_constraintEnd_toEndOf="parent"
+                                     app:layout_constraintHorizontal_bias="0.0"
+                                     app:layout_constraintStart_toStartOf="parent"
+                                     app:layout_constraintTop_toBottomOf="@+id/rvMon" />
+
+         <TextView
+             android:id="@+id/tvTus"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/croissant_one"
+             android:layout_marginTop="20dp"
+             android:text="Tuesday:"
+             android:textColor="@color/black"
+             android:textSize="35dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.13"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/rvMon" />
+
+                                       <androidx.recyclerview.widget.RecyclerView
+                                           android:id="@+id/rvTus"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="10dp"
+                                           app:layout_constraintTop_toBottomOf="@+id/tvTus"
+                                           tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                           tools:layout_editor_absoluteX="0dp"
+                                           tools:listitem="@layout/plan_card"
+                                           tools:orientation="horizontal"
+                                           tools:spanCount="1" />
+
+                                       <View
+                                           android:id="@+id/line6"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="5dp"
+                                           android:layout_marginTop="13dp"
+                                           android:background="#17131010"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.0"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintTop_toBottomOf="@+id/rvTus" />
+
+                                       <TextView
+                                           android:id="@+id/tvWed"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="20dp"
+                                           android:fontFamily="@font/croissant_one"
+                                           android:text="Wednesday:"
+                                           android:textColor="@color/black"
+                                           android:textSize="35dp"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.13"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintTop_toBottomOf="@+id/rvTus" />
+
+                                       <androidx.recyclerview.widget.RecyclerView
+                                           android:id="@+id/rvWed"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="10dp"
+                                           app:layout_constraintTop_toBottomOf="@+id/tvWed"
+                                           tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                           tools:layout_editor_absoluteX="0dp"
+                                           tools:listitem="@layout/plan_card"
+                                           tools:orientation="horizontal"
+                                           tools:spanCount="1" />
+
+                                       <View
+                                           android:id="@+id/line7"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="5dp"
+                                           android:layout_marginTop="13dp"
+                                           android:background="#17131010"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.0"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintTop_toBottomOf="@+id/rvWed" />
+
+                                       <TextView
+                                           android:id="@+id/tvThurs"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="20dp"
+                                           android:fontFamily="@font/croissant_one"
+                                           android:text="Thursday:"
+                                           android:textColor="@color/black"
+                                           android:textSize="35dp"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.139"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintTop_toBottomOf="@+id/line7" />
+
+                                       <androidx.recyclerview.widget.RecyclerView
+                                           android:id="@+id/rvThurs"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="10dp"
+                                           app:layout_constraintTop_toBottomOf="@+id/tvThurs"
+                                           tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                           tools:layout_editor_absoluteX="0dp"
+                                           tools:listitem="@layout/plan_card"
+                                           tools:orientation="horizontal"
+                                           tools:spanCount="1" />
+
+                                       <View
+                                           android:id="@+id/line8"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="5dp"
+                                           android:layout_marginTop="13dp"
+                                           android:background="#17131010"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.0"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintTop_toBottomOf="@+id/rvThurs" />
+
+
+                                       <TextView
+                                           android:id="@+id/tvFriday"
+                                           android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="20dp"
+                                           android:fontFamily="@font/croissant_one"
+                                           android:text="Friday:"
+                                           android:textColor="@color/black"
+                                           android:textSize="35dp"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.139"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintTop_toBottomOf="@+id/line8" />
+
+                                       <androidx.recyclerview.widget.RecyclerView
+                                           android:id="@+id/rvFriday"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginTop="10dp"
+                                           app:layout_constraintTop_toBottomOf="@+id/tvFriday"
+                                           tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                           tools:layout_editor_absoluteX="0dp"
+                                           tools:listitem="@layout/plan_card"
+                                           tools:orientation="horizontal"
+                                           tools:spanCount="1" />
+
+         <View
+             android:id="@+id/line9"
+             android:layout_width="match_parent"
+             android:layout_height="100dp"
+             android:layout_marginTop="13dp"
+             android:background="@color/transparent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.0"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/rvFriday" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

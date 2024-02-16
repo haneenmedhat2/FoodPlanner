@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.foodplanner.Item.view.ItemView;
 import com.example.foodplanner.model.MealResponse;
 import com.example.foodplanner.model.Meals;
+import com.example.foodplanner.model.Plan;
 import com.example.foodplanner.model.RepositoryInterface;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -63,6 +64,18 @@ public class ItemPresenterImp implements ItemPresenterInterface{
 
                 }, error -> {
                     Log.i(TAG, "Error adding Meal to favorites");
+                });
+    }
+
+    @Override
+    public void inserPlan(Plan plan) {
+        repo.inserPlan(plan)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> {
+                    Log.i(TAG, "Plan added  successfully");
+
+                }, error -> {
+                    Log.i(TAG, "Error adding plan ");
                 });
     }
 }

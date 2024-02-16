@@ -31,7 +31,7 @@
                 android:id="@+id/itemName"
                 android:layout_width="173dp"
                 android:layout_height="51dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginTop="36dp"
                 android:padding="8dp"
                 android:text="Foooood"
                 android:textColor="@color/black"
@@ -43,12 +43,29 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:targetApi="ice_cream_sandwich" />
 
+            <TextView
+                android:id="@+id/countryName"
+                android:layout_width="172dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="country"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@+id/itemName"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/itemName"
+                app:layout_constraintTop_toBottomOf="@+id/itemName"
+                tools:targetApi="ice_cream_sandwich" />
+
             <ImageButton
                 android:id="@+id/btnAddCalender"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginBottom="76dp"
+                android:layout_marginBottom="60dp"
                 android:background="@color/transparent"
                 android:src="@drawable/addcalender"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,33 +75,33 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image"
-                android:layout_width="190dp"
-                android:layout_height="209dp"
+                android:layout_width="161dp"
+                android:layout_height="208dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="3dp"
-                android:src="@drawable/mac"
+                android:src="@drawable/loading"
                 app:civ_border_color="#151313"
                 app:civ_border_width="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/itemName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.373" />
+                app:layout_constraintVertical_bias="0.367" />
 
             <ImageButton
                 android:id="@+id/btnAddFav"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="72dp"
+                android:layout_marginBottom="60dp"
                 android:background="@color/transparent"
                 android:src="@drawable/add_favorite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.605"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toEndOf="@+id/btnAddCalender"
                 app:layout_constraintTop_toBottomOf="@+id/itemName"
-                app:layout_constraintVertical_bias="0.2" />
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

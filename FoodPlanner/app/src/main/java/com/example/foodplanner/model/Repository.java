@@ -82,4 +82,19 @@ public class Repository implements RepositoryInterface{
     public Flowable<List<Meals>> getAllMeals() {
         return mealLocalDataSourceImp.getAllStoredMeals();
     }
+
+    @Override
+    public Completable inserPlan(Plan plan) {
+        return  mealLocalDataSourceImp.inserPlans(plan);
+    }
+
+    @Override
+    public Completable deletePlan(Plan plan) {
+        return mealLocalDataSourceImp.deletePlans(plan);
+    }
+
+    @Override
+    public Flowable<List<Plan>> getPlan() {
+        return  mealLocalDataSourceImp.getPlanByName();
+    }
 }
