@@ -1,4 +1,4 @@
-package com.example.foodplanner.search;
+package com.example.foodplanner.search.view;
 
 import android.os.Bundle;
 
@@ -24,6 +24,6 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+
     }
 }
