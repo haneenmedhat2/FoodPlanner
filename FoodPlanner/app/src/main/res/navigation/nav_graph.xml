@@ -31,7 +31,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/searchFragment2"
-        android:name="com.example.foodplanner.view.SearchFragment"
+        android:name="com.example.foodplanner.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
