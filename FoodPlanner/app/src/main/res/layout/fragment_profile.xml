@@ -5,161 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ProfileFragment"
-    android:background="@drawable/top_background">
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/top_background"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:orientation="vertical">
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circularImageView"
-            android:layout_width="184dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/chandlerjpg"
-            app:civ_border_color="#EAE3E3"
-            app:civ_border_width="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/usernameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="196dp"
-            android:text="Haneen Medhat"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ivCircle" />
-
-        <ImageView
-            android:id="@+id/ivCircle"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/circles"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    android:background="@drawable/food">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_alignParentBottom="true"
-        app:cardCornerRadius="50dp"
-        android:layout_marginBottom="-60dp">
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        app:cardCornerRadius="90dp"
+        android:layout_marginTop="200dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="45dp"
-            android:weightSum="3"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="60dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:paddingLeft="25dp">
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/croissant_one"
+                android:gravity="center"
+                android:text="UserName "
+                android:textColor="#150A0A"
+                android:textSize="40dp"
+                android:textStyle="bold"
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/gmail" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:textSize="20sp"
-
-                    android:text="Wiliam@gmail.com"
-                    android:textStyle="bold" />
-            </LinearLayout>
-            <View
-                android:id="@+id/divider1"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="?android:attr/listDivider" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:paddingLeft="25dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/manage_accounts" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:textSize="20sp"
-                    android:text="Edit Profile"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                app:layout_constraintBottom_toTopOf="@+id/btnGmail"
+                app:layout_constraintEnd_toStartOf="@+id/tvline1"
+                app:layout_constraintHorizontal_bias="0.062"
+                app:layout_constraintStart_toEndOf="@+id/tvline2" />
 
             <View
-                android:id="@+id/divider2"
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="?android:attr/listDivider" />
+                android:layout_height="20dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:paddingLeft="25dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="200dp"
+                android:layout_height="63dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/secondary"
+                android:paddingTop="15dp"
+                android:text="Logout"
+                android:textColor="@color/white"
+                app:iconTint="@color/black"
+                android:textSize="20sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnSignup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/logou" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:textSize="20sp"
-                    android:text="Logout"
-                    android:textStyle="bold" />
-            </LinearLayout>
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="?android:attr/listDivider" />
 
         </LinearLayout>
 
+
     </androidx.cardview.widget.CardView>
+
+
 
 </RelativeLayout>

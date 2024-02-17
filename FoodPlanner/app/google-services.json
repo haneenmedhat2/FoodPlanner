@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "849102557291",
+    "project_id": "plan-plate",
+    "storage_bucket": "plan-plate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849102557291:android:d96b4665f45cdfba5f212e",
+        "android_client_info": {
+          "package_name": "com.example.foodplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL1BjDNhdS49hzLP_1ihUR6ewdLjX2bRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
