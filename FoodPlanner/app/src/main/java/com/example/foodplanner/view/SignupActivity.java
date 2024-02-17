@@ -32,14 +32,6 @@ Button btnSignup;
     TextView loginNowTv;
 
     @Override
-    public void onStart() {
-        super.onStart();
-        if(mAuth.getCurrentUser() != null){
-            Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
-            startActivity(intent);
-        }
-    }
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
@@ -94,6 +86,10 @@ Button btnSignup;
                     confirmPassword.setError("Please confirm your password");
                     confirmPassword.requestFocus();
                 }
+               else if(!userPassword.equals(passConfirm)){
+                        confirmPassword.setError("Password ConfirmPassword does not match");
+                        confirmPassword.requestFocus();
+                    }
 
               else{
                   mAuth.createUserWithEmailAndPassword(userEmail, userPassword)

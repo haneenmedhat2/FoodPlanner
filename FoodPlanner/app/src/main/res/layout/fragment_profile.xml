@@ -30,7 +30,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/croissant_one"
                 android:gravity="center"
-                android:text="UserName "
+                android:text="PlanPlate "
                 android:textColor="#150A0A"
                 android:textSize="40dp"
                 android:textStyle="bold"

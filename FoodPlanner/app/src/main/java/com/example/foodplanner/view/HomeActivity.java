@@ -26,6 +26,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Bundle bundle= getIntent().getExtras();
+         boolean guest= bundle.getBoolean("IS_GUEST");
+
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigator_layout);
         bottomNavigationView=findViewById(R.id.btm_nav);
