@@ -69,6 +69,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public Observable getByFirstLetter(String letter) {
+        return remoteDataSourceAPI.NetworkGetByFirstLetter(letter);
+    }
+
+    @Override
     public Completable addMeal(Meals meals) {
         return mealLocalDataSourceImp.insertMeal(meals);
     }

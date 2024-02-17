@@ -109,5 +109,11 @@ public class RemoteDataSourceAPI implements RemoteDataSource{
     @Override
     public Observable networkGetMealByCountry(String countryName) {
         Observable<MealResponse> mealResponseObservable =mealService.getByCountryName(countryName).subscribeOn(Schedulers.io());
-        return mealResponseObservable;    }
+        return mealResponseObservable;
+    }
+
+    @Override
+    public Observable NetworkGetByFirstLetter(String letter) {
+        Observable<MealResponse> mealResponseObservable =mealService.getByFirstLetter(letter).subscribeOn(Schedulers.io());
+        return mealResponseObservable;      }
 }

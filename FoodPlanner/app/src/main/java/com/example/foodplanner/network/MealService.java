@@ -36,7 +36,8 @@ public interface MealService {
     @GET("filter.php")
     Observable<MealResponse> getByCountryName(@Query("a") String mealCountry);
 
-
+    @GET("search.php")
+    Observable<MealResponse> getByFirstLetter(@Query("f") String letter);
 
 
 

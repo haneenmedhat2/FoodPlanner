@@ -53,7 +53,7 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
     ActionBar actionBar;
 
     Meals meals;
-    Meals myMeal= new Meals();
+    Meals myMeal;
 
     ImageButton btnCalender;
 
@@ -68,7 +68,11 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
         if(getData != null){
             mealName=getData.getString("NAME_OF_MEAL");
         }
+        presenterImp= new ItemPresenterImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(this), MealLocalDataSourceImp.getInstance(this),ItemActivity.this),this);
+        presenterImp.getByMealName(mealName);
+        listener=this;
 
+        myMeal= new Meals();
         itemName= findViewById(R.id.itemName);
         countryName= findViewById(R.id.countryName);
         itemPageMealSteps=findViewById(R.id.itemPageMealSteps);
@@ -83,8 +87,7 @@ public class ItemActivity extends AppCompatActivity implements ItemView,OnIngred
         recyclerView.setHasFixedSize(true);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
 
-        presenterImp= new ItemPresenterImp(Repository.getInstance(RemoteDataSourceAPI.getInstance(this), MealLocalDataSourceImp.getInstance(this),ItemActivity.this),this);
-        presenterImp.getByMealName(mealName);
+
 
         plan= new Plan();
 

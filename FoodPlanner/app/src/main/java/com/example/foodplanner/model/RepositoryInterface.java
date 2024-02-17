@@ -21,6 +21,9 @@ public interface RepositoryInterface {
 
     public Observable getByCountryName(String countryName);
 
+    public Observable getByFirstLetter(String letter);
+
+
     public Completable addMeal(Meals meals);
     public Completable deleteMeal(Meals meals);
 

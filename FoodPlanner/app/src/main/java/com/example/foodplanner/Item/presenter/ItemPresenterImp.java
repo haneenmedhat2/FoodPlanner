@@ -57,7 +57,6 @@ public class ItemPresenterImp implements ItemPresenterInterface{
     @Override
     public void addToFav(Meals meals) {
         repo.addMeal(meals)
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(() -> {
                     Log.i(TAG, "Meal added to favorites successfully");
