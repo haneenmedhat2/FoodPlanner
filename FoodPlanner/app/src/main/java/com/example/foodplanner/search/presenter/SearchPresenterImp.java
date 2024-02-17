@@ -2,6 +2,7 @@ package com.example.foodplanner.search.presenter;
 
 import android.util.Log;
 
+import com.example.foodplanner.model.AllMealResponse;
 import com.example.foodplanner.model.CategoriesResponse;
 import com.example.foodplanner.model.MealResponse;
 import com.example.foodplanner.model.Meals;
@@ -202,21 +203,21 @@ public class SearchPresenterImp implements SearchPresenterInterface{
 
     @Override
     public void getIngredient() {
-        Observable<MealResponse> observable= repo.getIngredients();
+        Observable<AllMealResponse> observable= repo.getIngredients();
         observable.observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<MealResponse>() {
+                .subscribe(new Observer<AllMealResponse>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
 
                     }
                     @Override
-                    public void onNext(@NonNull MealResponse mealResponse) {
-                        view.getAllMeals(mealResponse.getMeal());
+                    public void onNext(@NonNull AllMealResponse mealResponse) {
+                        view.getIngredident(mealResponse.getMeals());
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Log.i(TAG, "onError: Random Meal");
+                        Log.i(TAG, "onError: Ingredient error ");
                     }
 
                     @Override
@@ -225,5 +226,29 @@ public class SearchPresenterImp implements SearchPresenterInterface{
                     }
                 });
 
+    }
+
+    @Override
+    public void getIngredientByName(String ingredientName) {
+        Observable <MealResponse> observable= repo.getByIngredientName(ingredientName);
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MealResponse>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+                    @Override
+                    public void onNext(@NonNull MealResponse mealResponse) {
+                        view.getByIngredient(mealResponse.getMeal());
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

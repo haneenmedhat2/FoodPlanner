@@ -4,6 +4,7 @@ import android.content.Context;
 import android.icu.text.UFormat;
 import android.util.Log;
 
+import com.example.foodplanner.model.AllMealResponse;
 import com.example.foodplanner.model.CategoriesResponse;
 import com.example.foodplanner.model.CountryResponse;
 import com.example.foodplanner.model.IngredientResponse;
@@ -90,7 +91,7 @@ public class RemoteDataSourceAPI implements RemoteDataSource{
 
     @Override
     public Observable networkIngredient() {
-        Observable<IngredientResponse> ingredientResponseObservable= mealService.getIngredients("list").subscribeOn(Schedulers.io());
+        Observable<AllMealResponse> ingredientResponseObservable= mealService.getIngredients("list").subscribeOn(Schedulers.io());
         return ingredientResponseObservable;
     }
 
@@ -116,4 +117,10 @@ public class RemoteDataSourceAPI implements RemoteDataSource{
     public Observable NetworkGetByFirstLetter(String letter) {
         Observable<MealResponse> mealResponseObservable =mealService.getByFirstLetter(letter).subscribeOn(Schedulers.io());
         return mealResponseObservable;      }
+
+    @Override
+    public Observable NetworkGetByIngredientName(String ingredientName) {
+        Observable<MealResponse> mealResponseObservable =mealService.getByIngredientName(ingredientName).subscribeOn(Schedulers.io());
+        return mealResponseObservable;
+    }
 }

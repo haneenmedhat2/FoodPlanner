@@ -8,6 +8,7 @@
     android:elevation="20dp"
     android:backgroundTint="#F6EFEF"
     app:cardPreventCornerOverlap="true"
+    android:id="@+id/in_card"
     app:cardCornerRadius="20dp">
 
 

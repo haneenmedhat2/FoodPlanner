@@ -74,6 +74,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public Observable getByIngredientName(String name) {
+        return remoteDataSourceAPI.NetworkGetByIngredientName(name);
+    }
+
+    @Override
     public Completable addMeal(Meals meals) {
         return mealLocalDataSourceImp.insertMeal(meals);
     }

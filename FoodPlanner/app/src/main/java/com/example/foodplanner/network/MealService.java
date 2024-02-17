@@ -1,5 +1,6 @@
 package com.example.foodplanner.network;
 
+import com.example.foodplanner.model.AllMealResponse;
 import com.example.foodplanner.model.CategoriesResponse;
 import com.example.foodplanner.model.CountryResponse;
 import com.example.foodplanner.model.IngredientResponse;
@@ -25,7 +26,7 @@ public interface MealService {
     Observable<MealResponse> getCountry(@Query("a") String country);
 
     @GET("list.php")
-    Observable<IngredientResponse> getIngredients(@Query("i") String ingredient);
+    Observable<AllMealResponse> getIngredients(@Query("i") String ingredient);
 
     @GET("search.php")
     Observable<MealResponse> getByMealName(@Query("s") String mealName);
@@ -38,6 +39,10 @@ public interface MealService {
 
     @GET("search.php")
     Observable<MealResponse> getByFirstLetter(@Query("f") String letter);
+
+    @GET("filter.php")
+    Observable<MealResponse> getByIngredientName(@Query("i") String ingredientName);
+
 
 
 

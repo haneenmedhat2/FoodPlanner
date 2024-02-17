@@ -16,6 +16,8 @@ public interface SearchPresenterInterface {
 
     public void getIngredient();
 
+    public void getIngredientByName(String ingredientName);
+
 
 
 

@@ -23,6 +23,8 @@ public interface RepositoryInterface {
 
     public Observable getByFirstLetter(String letter);
 
+    public Observable getByIngredientName(String name);
+
 
     public Completable addMeal(Meals meals);
     public Completable deleteMeal(Meals meals);

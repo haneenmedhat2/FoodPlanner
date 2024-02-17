@@ -27,6 +27,7 @@ import com.example.foodplanner.db.MealLocalDataSourceImp;
 import com.example.foodplanner.favorite.view.FavoriteAdapter;
 import com.example.foodplanner.homeScreen.presenter.HomePresenterImp;
 import com.example.foodplanner.homeScreen.view.RandomAdapter;
+import com.example.foodplanner.model.AllMeals;
 import com.example.foodplanner.model.Categories;
 import com.example.foodplanner.model.Meals;
 import com.example.foodplanner.model.Repository;
@@ -60,6 +61,10 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
 
     SearchAllCountryAdapter allCountryAdapter;
 
+    SearchIngredientAdapter ingredientAdapter;
+
+    SearchAllIngredient allIngredientAdapter;
+
 
     TextInputEditText text;
     RadioButton category;
@@ -69,9 +74,10 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
 
     boolean isCategory= false;
     boolean isCountry= false;
+    boolean isIngredient= false;
     List<Meals> categoryList= new ArrayList<>();
     List<Meals> countryList= new ArrayList<>();
-
+    List<Meals> ingredientList= new ArrayList<>();
 
 
 
@@ -108,6 +114,8 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
         allCatadapter=new SearchAllCatAdapter(view.getContext(),new ArrayList<>(),this);
         countryAdapter=new SearchCountryAdapter(new ArrayList<>(),view.getContext(),this);
         allCountryAdapter= new SearchAllCountryAdapter(view.getContext(),new ArrayList<>(),this);
+        ingredientAdapter= new SearchIngredientAdapter(new ArrayList<>(),view.getContext(),this);
+        allIngredientAdapter= new SearchAllIngredient(view.getContext(),new ArrayList<>(),this);
 
         category.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +129,13 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
             @Override
             public void onClick(View v) {
                 presenterImp.getCountry();
+            }
+        });
+
+        ingredient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenterImp.getIngredient();
             }
         });
 
@@ -138,7 +153,7 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
             @Override
             public void afterTextChanged(Editable s) {
                 search = s.toString().toLowerCase();
-                if (isCategory == false && isCountry ==false) {
+                if (isCategory == false && isCountry ==false && isIngredient==false) {
                     presenterImp.getByLetter(search);
                 }
                 if(isCategory){
@@ -146,6 +161,9 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
                 }
                 if(isCountry){
                     filterCountryMeals(search);
+                }
+                if (isIngredient){
+                    filterIngredientMeals(search);
                 }
 
 
@@ -193,6 +211,17 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
                     allCountryAdapter.notifyDataSetChanged();
                 });
     }
+    public void filterIngredientMeals(String searchQuery) {
+
+        Observable.fromIterable(ingredientList)
+                .filter(meal -> meal.getStrMeal().toLowerCase().contains(searchQuery))
+                .toList()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(filteredMeals -> {
+                    allIngredientAdapter.setMeals(filteredMeals);
+                    allIngredientAdapter.notifyDataSetChanged();
+                });
+    }
 
     @Override
     public void getCategories(List<Categories> list) {
@@ -232,6 +261,21 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
     }
 
     @Override
+    public void getIngredident(List<AllMeals> list) {
+        recyclerView.setAdapter(ingredientAdapter);
+        ingredientAdapter.setIngredient(list);
+        ingredientAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void getByIngredient(List<Meals> list) {
+        ingredientList=list;
+        recyclerView.setAdapter(allIngredientAdapter);
+        allIngredientAdapter.setMeals(list);
+        allIngredientAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onMealClick(Meals meal) {
       addData(meal);
     }
@@ -247,6 +291,12 @@ public class SearchFragment extends Fragment implements OnSearchClickListener,Se
     public void countryOnClick(String country) {
         presenterImp.getCountryName(country);
         isCountry=true;
+    }
+
+    @Override
+    public void IngredientyOnClick(String ingredient) {
+        presenterImp.getIngredientByName(ingredient);
+        isIngredient=true;
     }
 
     @Override
