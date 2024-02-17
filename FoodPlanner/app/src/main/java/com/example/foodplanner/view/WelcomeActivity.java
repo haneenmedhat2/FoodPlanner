@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
-    public static boolean guest ;
+    public static boolean guest =true;
 
 
 

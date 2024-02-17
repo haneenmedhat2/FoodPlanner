@@ -8,7 +8,7 @@
     android:background="#FBF9F9"
     tools:context=".view.MainActivity">
 
-
+<!--
     <TextView
         android:id="@+id/tvfav_title1"
         android:layout_width="396dp"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.788"
-        tools:targetApi="ice_cream_sandwich" />
+        tools:targetApi="ice_cream_sandwich" />-->
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
@@ -65,10 +65,9 @@
         android:layout_height="445dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/animated" />

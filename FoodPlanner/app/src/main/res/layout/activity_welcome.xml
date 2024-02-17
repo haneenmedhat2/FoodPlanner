@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mac"
-    android:alpha=".9"
     tools:context=".view.WelcomeActivity">
 
 
@@ -30,10 +29,10 @@
     <Button
         android:id="@+id/btnLogin"
         style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="255dp"
+        android:layout_width="225dp"
         android:layout_height="67dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/secondary"
         android:text="@string/login_button"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -46,10 +45,10 @@
     <Button
         android:id="@+id/btnSignup"
         style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="255dp"
+        android:layout_width="225dp"
         android:layout_height="70dp"
         android:layout_marginBottom="28dp"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/secondary"
         android:paddingTop="15dp"
         android:text="@string/Signup_btn"
         android:textColor="@color/white"
@@ -109,7 +108,7 @@
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="311dp"
         android:layout_height="67dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/secondary"
         android:src="@drawable/google"
         android:text="@string/singup_gmail"

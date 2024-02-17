@@ -12,6 +12,6 @@
     <string name="signup_btn">Signup\n</string>
     <string name="btn_editProfile">Edit Profile</string>
     <string name="daily_inspiration">Daily Inspiration</string>
-    <string name="category_home">Categories\n\n</string>
-    <string name="country_home">Countries\n</string>
+    <string name="category_home">Meal Categories\n\n</string>
+    <string name="country_home">World Recipes\n</string>
 </resources>

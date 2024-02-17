@@ -103,7 +103,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
         CardView cardView;
         TextView tvTitle;
         ImageView ivPhoto;
-        Button add;
+        ImageView add;
         public MealHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvCatTitle);
