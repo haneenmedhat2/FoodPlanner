@@ -41,7 +41,7 @@ public class DayChooserDialog extends DialogFragment {
             radioGroup.addView(radioButton);
         }
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();

@@ -2,6 +2,7 @@ package com.example.foodplanner.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,6 +10,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,9 +30,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Bundle bundle= getIntent().getExtras();
-         boolean guest= bundle.getBoolean("IS_GUEST");
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigator_layout);
@@ -42,6 +42,46 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView,navController);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if(WelcomeActivity.guest==true){
+                    if (item.getItemId() == R.id.searchFragment2){
+                        navController.navigate(R.id.searchFragment2);
+                    }
+                    if (item.getItemId() == R.id.homeFragment2){
+                        navController.navigate(R.id.homeFragment2);
+                    }
+                    if (item.getItemId() == R.id.favouriteFragment2){
+                        navController.navigate(R.id.favouriteFragment2);
+                    }
+                    if (item.getItemId() == R.id.weaklyPlanFragment){
+                        navController.navigate(R.id.weaklyPlanFragment);
+                    }
+                    if (item.getItemId() == R.id.profileFragment2){
+                        navController.navigate(R.id.profileFragment2);
+                    }
+                }
+
+
+                if(WelcomeActivity.guest==false){
+                    if (item.getItemId() == R.id.searchFragment2){
+                        navController.navigate(R.id.searchFragment2);
+                    }
+                    if (item.getItemId() == R.id.homeFragment2){
+                        navController.navigate(R.id.homeFragment2);
+                    }
+                    if (item.getItemId() == R.id.favouriteFragment2 ||
+                            item.getItemId() == R.id.weaklyPlanFragment ||
+                            item.getItemId() == R.id.profileFragment2) {
+                        showDialog();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -54,6 +94,27 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Signup")
+                .setMessage("Do you want to signup?")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        WelcomeActivity.guest=true;
+                        Intent intent = new Intent(HomeActivity.this, SignupActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
 

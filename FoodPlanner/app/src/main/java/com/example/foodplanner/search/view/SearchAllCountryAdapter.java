@@ -19,6 +19,7 @@ import com.example.foodplanner.R;
 import com.example.foodplanner.country.view.AllCountryAdapter;
 import com.example.foodplanner.country.view.OnCountryClickListener;
 import com.example.foodplanner.model.Meals;
+import com.example.foodplanner.view.WelcomeActivity;
 
 import java.util.List;
 
@@ -59,9 +60,16 @@ public class SearchAllCountryAdapter extends  RecyclerView.Adapter<SearchAllCoun
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(context, ItemActivity.class);
-                intent.putExtra("NAME_OF_MEAL",meals1.getStrMeal());
-                context.startActivity(intent);
+                if(WelcomeActivity.guest==false){
+                    Toast.makeText(v.getContext(),"Please Signup First" ,
+                            Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent= new Intent(context, ItemActivity.class);
+                    intent.putExtra("NAME_OF_MEAL",meals1.getStrMeal());
+                    context.startActivity(intent);
+                }
+
+
             }
         });
 

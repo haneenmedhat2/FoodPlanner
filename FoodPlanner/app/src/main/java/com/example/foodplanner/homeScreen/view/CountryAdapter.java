@@ -1,6 +1,7 @@
 package com.example.foodplanner.homeScreen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,10 +17,12 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.foodplanner.Item.view.ItemActivity;
 import com.example.foodplanner.R;
 import com.example.foodplanner.country.view.AllCountryFragment;
 import com.example.foodplanner.model.Country;
 import com.example.foodplanner.model.Meals;
+import com.example.foodplanner.view.WelcomeActivity;
 
 import java.util.List;
 
@@ -90,10 +94,15 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Bundle bundle=new Bundle();
-                bundle.putString("MEAL_AREA", country.getStrArea());
-                Navigation.findNavController(v).navigate(R.id.action_homeFragment2_to_allCountryFragment,bundle);
+                if(WelcomeActivity.guest==false){
+                    Toast.makeText(v.getContext(),"Please Signup First" ,
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("MEAL_AREA", country.getStrArea());
+                    Navigation.findNavController(v).navigate(R.id.action_homeFragment2_to_allCountryFragment, bundle);
+                }
 
 
 

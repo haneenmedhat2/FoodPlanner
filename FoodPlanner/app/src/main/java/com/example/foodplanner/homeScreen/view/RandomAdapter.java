@@ -21,6 +21,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.foodplanner.Item.view.ItemActivity;
 import com.example.foodplanner.R;
 import com.example.foodplanner.model.Meals;
+import com.example.foodplanner.view.WelcomeActivity;
 
 import java.util.List;
 
@@ -66,9 +67,16 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MealHolder
                 .into(holder.ivPhoto);
 
         holder.cardView.setOnClickListener(v -> {
-            Intent myIntent =new Intent(context, ItemActivity.class);
-            myIntent.putExtra("NAME_OF_MEAL",meals.get(position).getStrMeal());
-            context.startActivity(myIntent);
+            if(WelcomeActivity.guest==false){
+                Toast.makeText(v.getContext(),"Please Signup First" ,
+                        Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Intent myIntent =new Intent(context, ItemActivity.class);
+                myIntent.putExtra("NAME_OF_MEAL",meals.get(position).getStrMeal());
+                context.startActivity(myIntent);
+            }
+
         });
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override

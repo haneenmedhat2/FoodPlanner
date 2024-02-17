@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
-    boolean guest=true;
+    public static boolean guest ;
 
 
 
@@ -76,7 +76,6 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 guest=false;
                 Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
-                intent.putExtra("IS_GUEST",guest);
                 startActivity(intent);
             }
         });
