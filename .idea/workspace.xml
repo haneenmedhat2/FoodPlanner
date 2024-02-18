@@ -16,7 +16,49 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8166354c-2b20-4977-a7df-1a48802c306f" name="Changes" comment="" />
+    <list default="true" id="8166354c-2b20-4977-a7df-1a48802c306f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/Categories/OnCategoryclickListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/CategoriesAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/CountryAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/Categories.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/CategoriesResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/CountryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/category_card.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/country_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/FavouriteFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/FavouriteFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/SearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/SignupActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/WelcomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/view/WelcomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/presenter/HomePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/presenter/HomePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/presenter/HomePresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/presenter/HomePresenterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/RandomAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/RandomAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/RandomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/homeScreen/view/HomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/RepositoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/model/RepositoryInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/MealService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/MealService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/NetworkCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/NetworkCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/RemoteDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/RemoteDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/RemoteDataSourceAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/java/com/example/foodplanner/network/RemoteDataSourceAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_welcome.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/activity_welcome.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_favourite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_favourite.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/inspiration_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/layout/inspiration_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodPlanner/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,24 +73,27 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="2bydyv2iBsjINgofSkpkzKeTaiJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/Dell/Desktop/Android Food Planner/FoodPlanner",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/Desktop/Android Food Planner&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="FoodPlanner.app.main" />
