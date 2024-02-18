@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="10dp"
+    android:backgroundTint="@color/white"
+    android:id="@+id/allFavCard">
+
+
+    <ImageView
+        android:id="@+id/imageAllFav"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/chandlerjpg"
+        app:civ_border_color="#EAE3E3"
+        app:civ_border_width="2dp" />
+
+
+
+    <TextView
+            android:id="@+id/tvFavType"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="40dp"
+        android:gravity="center"
+            android:padding="8dp"
+            android:text="Foooood"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/itemCardFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/transparent"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:id="@+id/removeFromfav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/love" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.cardview.widget.CardView>

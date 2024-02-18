@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="230dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:elevation="20dp"
+    android:backgroundTint="#EAE4E4"
+    app:cardPreventCornerOverlap="true"
+    android:id="@+id/countryCard"
+    app:cardCornerRadius="20dp">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="190dp"
+        android:layout_height="209dp"
+        android:gravity="center"
+        android:src="@drawable/mac"
+        app:civ_border_color="#EAE3E3"
+        android:layout_marginLeft="17dp"
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/tvCountryName"
+        android:layout_width="173dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Foooood"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        tools:targetApi="ice_cream_sandwich" />
+
+
+</androidx.cardview.widget.CardView>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/food"
-    tools:context=".SignupActivity">
+    tools:context=".view.SignupActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -28,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/croissant_one"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/croissant_one"
                 android:gravity="center"
                 android:text="Signup "
                 android:textColor="#150A0A"
@@ -159,6 +159,22 @@
                 app:layout_constraintBottom_toTopOf="@+id/btnSignup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/loginNowTv"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/croissant_one"
+                android:gravity="center"
+                android:text="Click to login "
+                android:textColor="#514F4F"
+                android:textSize="20dp"
+                android:textStyle=""/>
+
 
 
         </LinearLayout>

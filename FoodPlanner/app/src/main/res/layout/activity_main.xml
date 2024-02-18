@@ -5,36 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:htext="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    android:background="#FBF9F9"
+    tools:context=".view.MainActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/f"
-        tools:layout_editor_absoluteX="-8dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-
+<!--
     <TextView
-        android:id="@+id/tvfav_title"
+        android:id="@+id/tvfav_title1"
         android:layout_width="396dp"
         android:layout_height="87dp"
-        android:layout_marginBottom="412dp"
-        android:fontFamily="@font/lobster"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
         android:padding="8dp"
         android:shadowColor="#574B53"
         android:shadowDx="15"
         android:shadowDy="2"
         android:shadowRadius="8"
-        android:text="“Good food, good mood!”"
-        android:textColor="#E6E6E6"
+        android:text="PlanPlate"
+        android:textColor="#1B1A1A"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvfav_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="ice_cream_sandwich" />
+
+
+
+
+    <TextView
+        android:id="@+id/tvfav_title2"
+        android:layout_width="396dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:padding="8dp"
+        android:shadowColor="#574B53"
+        android:shadowDx="15"
+        android:shadowDy="2"
+        android:shadowRadius="8"
+        android:text="“No More Meal Worries”"
+        android:textColor="#1B1A1A"
         android:textSize="38dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/animationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.788"
+        tools:targetApi="ice_cream_sandwich" />-->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="378dp"
+        android:layout_height="445dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="ice_cream_sandwich" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animated" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

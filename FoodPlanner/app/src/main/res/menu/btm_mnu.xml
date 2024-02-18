@@ -15,6 +15,13 @@
 
         />
 
+        <item android:id="@+id/weaklyPlanFragment"
+            android:icon="@drawable/plan"
+            android:title="Plan"
+
+
+            />
+
     <item android:id="@+id/searchFragment2"
         android:icon="@drawable/search"
         android:title="Search"
