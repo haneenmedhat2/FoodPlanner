@@ -56,7 +56,7 @@ public class AllCountryFragment extends Fragment implements AllCountryView,OnCou
 
 
         recyclerView= view.findViewById(R.id.rvAllCountry);
-        gridLayoutManager=new GridLayoutManager(getContext(),2,RecyclerView.HORIZONTAL,false);////
+        gridLayoutManager=new GridLayoutManager(getContext(),1,RecyclerView.VERTICAL,false);////
         recyclerView.setLayoutManager(gridLayoutManager);
         adapter=new AllCountryAdapter(getContext(),new ArrayList<>(),this);
         recyclerView.setAdapter(adapter);

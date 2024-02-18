@@ -41,7 +41,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanHolder>{
     @Override
     public PlanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view= inflater.inflate(R.layout.plan_card,parent,false);
+        View view= inflater.inflate(R.layout.inspiration_card,parent,false);
         PlanHolder holder= new PlanHolder(view);
         return holder;
     }
@@ -82,14 +82,14 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanHolder>{
         TextView textView;
         ImageView imageView;
         CardView cardView;
-        ImageButton button;
+        ImageView button;
 
         public PlanHolder(@NonNull View itemView) {
             super(itemView);
-            textView=itemView.findViewById(R.id.tvplanTitle);
-            imageView=itemView.findViewById(R.id.planImg);
+            textView=itemView.findViewById(R.id.tvCatTitle);
+            imageView=itemView.findViewById(R.id.circularImageView);
             cardView=itemView.findViewById(R.id.card_inspire);
-            button=itemView.findViewById(R.id.btnFav);
+            button=itemView.findViewById(R.id.btnAddToFav);
 
         }
     }

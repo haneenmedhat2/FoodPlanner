@@ -48,7 +48,7 @@ public class SearchAllCatAdapter extends RecyclerView.Adapter<SearchAllCatAdapte
     @Override
     public AllCategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.allcategories_card, parent, false);
+        View view = inflater.inflate(R.layout.inspiration_card, parent, false);
         AllCategoryHolder categoryHolder= new AllCategoryHolder(view);
         Log.i(TAG, "onCreateViewHolder: AllCategory");
         return categoryHolder;    }
@@ -96,14 +96,14 @@ public class SearchAllCatAdapter extends RecyclerView.Adapter<SearchAllCatAdapte
         TextView tvTitle;
         ImageView ivPhoto;
         CardView cardView;
-        ImageButton button;
+        ImageView button;
 
         public AllCategoryHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvCatType);
-            ivPhoto = itemView.findViewById(R.id.imageAllCat);
-            cardView= itemView.findViewById(R.id.allCatCard);
-            button=itemView.findViewById(R.id.removefav);
+            tvTitle = itemView.findViewById(R.id.tvCatTitle);
+            ivPhoto = itemView.findViewById(R.id.circularImageView);
+            cardView= itemView.findViewById(R.id.card_inspire);
+            button=itemView.findViewById(R.id.btnAddToFav);
 
         }
     }

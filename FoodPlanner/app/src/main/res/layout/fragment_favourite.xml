@@ -9,27 +9,36 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="360dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:text="Click To View Details About Each Meal!"
-        android:textColor="#A15757"
-        android:textSize="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/croissant_one"
+        android:gravity="center"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="Your saved recipes"
+        android:textColor="#D36363"
+        android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvAllFav"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAllFav"
         android:layout_width="400dp"
         android:layout_height="495dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

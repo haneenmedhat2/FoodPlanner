@@ -9,14 +9,22 @@
 
     <TextView
         android:id="@+id/textName"
-        android:layout_width="360dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginTop="32dp"
-        android:text="Click To View Details About The Meal!"
-        android:textColor="#A15757"
+        android:layout_gravity="center"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/croissant_one"
+        android:gravity="center"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="Click To View Details About Each Meal!"
+        android:textColor="#D36363"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +35,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/inspiration_card"
         app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class SearchAllCountryAdapter extends  RecyclerView.Adapter<SearchAllCoun
     @Override
     public AllCountryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view= inflater.inflate(R.layout.allcountry_card,parent,false);
+        View view= inflater.inflate(R.layout.inspiration_card,parent,false);
         AllCountryHolder countryHolder= new AllCountryHolder(view);
         return countryHolder;    }
 
@@ -90,16 +91,16 @@ public class SearchAllCountryAdapter extends  RecyclerView.Adapter<SearchAllCoun
 
     class AllCountryHolder extends RecyclerView.ViewHolder{
         TextView textView;
-        CircleImageView circleImageView;
+        ImageView circleImageView;
         CardView cardView;
-        ImageButton button;
+        ImageView button;
 
         public AllCountryHolder(@NonNull View itemView) {
             super(itemView);
-            textView=itemView.findViewById(R.id.tvCountryType);
-            circleImageView=itemView.findViewById(R.id.imageAllCountry);
-            cardView=itemView.findViewById(R.id.allCountryCard);
-            button=itemView.findViewById(R.id.removefav);
+            textView=itemView.findViewById(R.id.tvCatTitle);
+            circleImageView=itemView.findViewById(R.id.circularImageView);
+            cardView=itemView.findViewById(R.id.card_inspire);
+            button=itemView.findViewById(R.id.btnAddToFav);
 
         }
     }

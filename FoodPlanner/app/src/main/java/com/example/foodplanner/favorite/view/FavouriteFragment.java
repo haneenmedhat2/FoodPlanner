@@ -51,7 +51,7 @@ public class FavouriteFragment extends Fragment implements FavoriteView,OnFavCli
                 MealLocalDataSourceImp.getInstance(getContext()),view.getContext()));
 
         recyclerView= view.findViewById(R.id.rvAllFav);
-        gridLayoutManager=new GridLayoutManager(getContext(),2,RecyclerView.HORIZONTAL,false);
+        gridLayoutManager=new GridLayoutManager(getContext(),1,RecyclerView.VERTICAL,false);
         adapter=new FavoriteAdapter(getContext(),this,new ArrayList<>());
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
